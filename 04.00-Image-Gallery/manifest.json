@@ -1,0 +1,54 @@
+{
+    "editWitoutPostback": true,
+    "editRole": "",
+    "Index": true, /* Required for search */
+    "detailMetaTitle": "{{Title}}",
+    "detailMetaDescription": "{{Description}}",
+    "detailUrl": "{{Title}}",
+    "detailMeta": "{{#if Image.url}}<meta property=\"og:image\" content=\"//{{Context.HTTPAlias}}{{Image.url}}\" />{{else}}<meta property=\"og:image\" content=\"//{{Context.HTTPAlias}}{{Gallery.0.Image}}\" />{{/if}}<meta property=\"og:type\" content=\"article\" />",
+    "templates": {
+        "template": {
+            "type": "multiple", /* single or multiple*/
+            "title": "List",
+            "clientSideData": true, /*  */
+            "main": {
+                "template": "template.hbs",
+                "partialTemplates": {
+                    "item": {
+                        "template": "item.hbs",
+                        "clientside": true
+                    }
+                },
+                "schemaInTemplate": true,
+                "optionsInTemplate": true,
+                "additionalDataInTemplate": true
+            },
+            "detail": {
+                "template": "detail.hbs",
+                "schemaInTemplate": true,
+                "optionsInTemplate": true,
+                "additionalDataInTemplate": true
+            }
+
+        },
+        "picturelist": {
+            "type": "multiple", /* single or multiple*/
+            "title": "Picture list",
+            "clientSideData": false, /*  */
+            "main": {
+                "template": "picturelist.hbs",
+                "schemaInTemplate": true,
+                "optionsInTemplate": true,
+                "additionalDataInTemplate": true,
+                "clientside": false
+            }
+        }
+     },
+    "additionalData": {
+        "Tags": {
+            "title": "Tags",
+            "storageKey": "Tags",
+            "modelKey": "Tags"
+        }
+    }
+}

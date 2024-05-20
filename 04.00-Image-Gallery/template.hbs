@@ -1,0 +1,213 @@
+{{registerscript "js/jplist/jplist.core.min.js"}}
+{{registerscript "js/jplist/jplist.filter-toggle-bundle.min.js"}}
+{{registerscript "js/jplist/jplist.textbox-filter.min.js"}}
+{{registerscript "js/jplist/jplist.bootstrap-pagination-bundle.min.js"}}
+{{registerscript "js/jplist/jplist.bootstrap-sort-dropdown.min.js"}}
+{{registerscript "js/jplist/jplist.preloader-control.min.js"}}
+{{registerstylesheet "/DesktopModules/OpenContent/css/font-awesome/css/font-awesome.css"}}
+{{registerscript "/DesktopModules/OpenContent/js/alpaca-1.5.8/lib/handlebars/handlebars.js"}}
+{{registerscript "/DesktopModules/OpenContent/js/alpaca-1.5.8/lib/moment/min/moment.min.js"}}
+
+<div class="oc-photo-album">
+    <div id="oc-photo-album" class="jplist" data-moduleid="{{Context.ModuleId}}">
+        <div class="row">
+            <div class="col-12 col-xs-12">
+                <div class="gallery-intro">
+                    {{Settings.Intro}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-xs-12">
+
+                <!-- panel -->
+                <div class="jplist-panel">
+                    {{#if Settings.ShowSearch}}
+                    <!-- filter by title -->
+                    <div class="text-filter-box form-group">
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+
+                            <input data-path=".title" class="form-control"
+                                   type="text"
+                                   value=""
+                                   placeholder="{{Localization.TextFilter}}"
+                                   data-control-type="textbox"
+                                   data-control-name="Title"
+                                   data-control-action="filter" />
+                        </div>
+                    </div>
+
+                    {{/if}}
+                    {{#if Settings.Tags}}
+                    <!-- Button Text Filters Group Control -->
+                    <div class="jplist-group form-group"
+                         data-control-type="button-filter-group"
+                         data-control-action="filter"
+                         data-control-name="Tags">
+
+                        <ul class="tags">
+                            {{#each AdditionalData.Tags}}
+                            <li>
+                                <span data-path="{{Id}}"
+                                      data-button="true">
+
+                                    {{Tag}}
+                                </span>
+                            </li>
+                            {{/each}}
+
+                        </ul>
+                    </div>
+                    {{/if}}
+					{{#if Settings.Sort}}
+                    <!-- sort dropdown -->
+                    <div class="dropdown form-group"
+                         data-control-type="boot-sort-drop-down"
+                         data-control-name="sort"
+                         data-control-action="sort"
+                         data-control-deep-link="true"
+                         data-datetime-format="{month}/{day}/{year}">
+                        <!-- {year}, {month}, {day}, {hour}, {min}, {sec} -->
+
+                        <label for="dropdown-menu-1">{{Localization.SortLabel}}</label>
+
+                        <button class="btn btn-default dropdown-toggle"
+                                type="button"
+                                id="dropdown-menu-1"
+                                data-toggle="dropdown"
+                                aria-expanded="true">
+                            <span data-type="selected-text">Sort by</span>
+                            <span class="caret"></span>
+                        </button>
+
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-menu-1">
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#" data-path="Title" data-order="asc" data-type="text" data-default="true">{{Localization.Title}} A-Z</a>
+                            </li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#" data-path="Title" data-order="desc" data-type="text">{{Localization.Title}} Z-A</a>
+                            </li>
+
+                            <li role="presentation" class="divider"></li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#" data-path="publishstartdate" data-order="asc" data-type="datetime">{{Localization.Date}} asc</a>
+                            </li>
+
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#" data-path="publishstartdate" data-order="desc" data-type="datetime">{{Localization.Date}} desc</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+					{{/if}}
+                </div>
+               
+				
+				 <!-- preloader for data sources -->
+			  <div 
+				 class="jplist-hide-preloader jplist-preloader"
+				 data-control-type="preloader" 
+				 data-control-name="preloader" 
+				 data-control-action="preloader">
+				 <img src="{{Context.TemplatePath}}ajax-loader-line.gif" alt="{{Localization.Loading}}" title="{{Localization.Loading}}" />
+			  </div>	
+				
+				
+            </div>
+            <div class="col-12 col-xs-12">			
+                <!-- data -->
+                <div class="list row {{#if Settings.CropListImages}}list-image-crop{{else}}list-image-scale{{/if}}">
+
+                </div>
+                <div class="jplist-no-results jplist-hidden">
+                    <p>{{Localization.NoResults}}</p>
+                </div>
+            </div>
+
+             {{#if Settings.Rss}}
+               
+                    <div class="col-12 col-xs-12 text-right">
+                        <i class="fa fa-rss"></i>
+                        <a href="{{Context.RssUrl}}">Rss</a>
+                    </div>
+
+                {{/if}}
+        </div>
+        {{#if Settings.Paging.Enabled}}
+        <div class="jplist-panel row pt-4">
+
+            <div class="col-12 col-xs-12">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+						
+                        <!-- items per page dropdown -->
+                        <div class="dropdown pull-left jplist-items-per-page"
+                             data-control-type="boot-items-per-page-dropdown"
+                             data-control-name="paging"
+                             data-control-action="paging">
+
+                            <button class="btn btn-primary dropdown-toggle"
+                                    type="button"
+                                    data-toggle="dropdown"
+                                    id="dropdown-menu-1"
+                                    aria-expanded="true">
+                                <span data-type="selected-text">{{Localization.ItemsPerPage}}</span>
+                                <span class="caret"></span>
+                            </button>
+
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-menu-1">
+
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#" data-number="6">6 {{Localization.ByPage}}</a>
+                                </li>
+
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#" data-number="12" data-default="true">12 {{Localization.ByPage}}</a>
+                                </li>
+
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#" data-number="24">24 {{Localization.ByPage}}</a>
+                                </li>
+
+                                <li role="presentation" class="divider"></li>
+
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="#" data-number="all">{{Localization.ShowAll}}</a>
+                                </li>
+                            </ul>
+                        </div>
+						
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <!-- bootstrap pagination control -->
+                        <ul class="pagination pull-left jplist-pagination"
+                            data-control-type="boot-pagination"
+                            data-control-name="paging"
+                            data-control-action="paging"
+                            data-range="8"
+                            data-mode="google-like"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xs-12 pt-3">
+				{{#if Settings..Paging.ShowCurrentPage}}
+                <!-- pagination info label -->
+                <div class="pull-left jplist-pagination-info"
+                     data-type="{{Localization.PageXofY}}"
+                    data-control-type="pagination-info"
+                    data-control-name="paging"
+                    data-control-action="paging"></div>
+				{{/if}}
+            </div>
+        </div>
+        {{/if}}
+
+
+    </div>
+</div>
