@@ -1,6 +1,4 @@
-# 40FINGERS Open Content Embed Template
-An Embed Template for [Open Content](https://opencontent.readme.io/)
+# 40FINGERS Open Content Include Bootstrap
+A Template for [Open Content](https://opencontent.readme.io/)
 
-This template can be used for HTML or Script that you want to add to your website.
-
-![Edit interface option](edit.png)
+Allows you ot include either Bootstrap 4 or 5 to test Modules / Themes
