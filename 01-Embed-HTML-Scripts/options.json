@@ -1,0 +1,21 @@
+{
+  "fields": {
+    "HTML": {
+      "type": "textarea"
+    },
+    "scripts": {
+      "type": "object",
+      "fields": {
+        "script": {
+          "type": "textarea"
+        },
+        "scriptForEdit": {
+          "type": "checkbox"
+        },
+        "scriptEnabled": {
+          "type": "checkbox"
+        }
+      }
+    }
+  }
+}
