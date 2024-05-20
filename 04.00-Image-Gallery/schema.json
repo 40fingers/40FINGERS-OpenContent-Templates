@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "properties": {
+    "Title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "Summary": {
+      "type": "string",
+      "title": "Beschrijving"
+    },
+    "AlbumDate": {
+      "title": "Album datum"
+    },
+    "Image": {
+      "type": "string",
+      "title": "Main Image"
+    },
+    "Gallery": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "Description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "Image": {
+            "type": "string",
+            "title": "Image"
+          }
+        }
+      }
+    },
+    "Tags": {
+      "type": "array",
+      "title": "Tags"
+    }
+  }
+}

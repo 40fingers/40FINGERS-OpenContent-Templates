@@ -1,0 +1,16 @@
+{
+   "Title": "Titel",
+   "Date": "Datum",
+   "ItemsPerPage": "Bilder pro Seite",
+   "ByPage": "pro Seite",
+   "ShowAll": "Alle anzeigen",
+   "TextFilter": "Nach Titel fiiltern",
+   "SortLabel": "Sortieren nach",
+   "Loading": "Lade...",
+   "NoResults": "Keine Ergebnisse",
+   "PageXofY": "<strong>Seite {current} von {pages}</strong>",
+   "Tags": "Schlagworte",
+   "OpenGallery": "Bilder anzeigen",
+   "BackToList": "Zurück zur Übersicht"
+}
+

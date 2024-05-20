@@ -1,0 +1,55 @@
+{{registerstylesheet "/DesktopModules/OpenContent/css/font-awesome/css/font-awesome.css"}}
+{{registerstylesheet "js/fancybox/jquery.fancybox.min.css"}}
+{{registerscript "js/fancybox/jquery.fancybox.min.js"}}
+
+{{registerstylesheet "template.css"}}
+
+<div class="oc-photo-album detailwrapper {{#if Settings.CropListImages}}list-image-crop{{else}}list-image-scale{{/if}}">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row oc-gallery">
+                <div class="caption col-md-12">
+                    <h1 class="title mb-2">{{Title}}</h1>
+                    <div class="date pb-2">
+                
+                        {{formatDateTime AlbumDate "dd-MM-yyyy" }}
+                    </div>
+                    <div class="desc pb-4">
+                        {{Summary}}
+                    </div>
+                </div>
+                </div>
+            {{#if Gallery}}
+            <div class="row" >
+                {{#each Gallery}}
+                <div class="col-12 col-sm-6 col-lg-3 col-xl-3 pb-4">
+                    <div class="photo_box">
+                        <a href="{{Image}}?width=1500&autorotate=true"  data-fancybox="gallery" title="">
+                            <img src="{{Image}}?width=600&autorotate=true" alt="" title="" class="gallery-icon unresponsive" loading="lazy" />
+                        </a>
+                        {{#if Title}}
+                         <h4 class="h6 my-0">{{Title}}</h4>
+                         {{/if}}
+                         {{#if Description}}
+                         <div class="desciption small">{{Description}}</div>
+                         {{/if}}
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+            {{#if Tags}}
+            <div class="tags pb-4">{{Localization.Tags}}: 
+                {{#each Tags}}
+                <span class="{{Id}}">{{Tag}}</span>
+                {{/each}}
+            </div>
+            {{/if}}
+        </div>
+  	</div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{Context.MainUrl}}" class="btn btn-default">{{Localization.BackToList}}</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+{
+  "fields": {
+    "Intro": {
+      "type": "mlckeditor",
+      "label": "Intro text"
+    },
+    "CropListImages": {
+      "type": "checkbox",
+      "label": "Crop images in List"
+    },
+    "ShowSearch": {
+      "type": "checkbox",
+      "label": "Show Search by Title"
+    },
+    
+    "Sort": {
+      "type": "checkbox",
+      "label": "Sorting"
+    },
+    "Paging": {
+      "fields": {
+        "Enabled": {
+          "type": "checkbox",
+          "label": "Enable Paging"
+        },
+        "ShowCurrentPage": {
+          "type": "checkbox",
+          "label": "Show Page 'x of Total' Text"
+        }
+      }
+    },
+    "PhotoCount": {
+      "type": "checkbox",
+      "label": "Show Photo Count"
+    },
+    "Tags": {
+      "type": "checkbox",
+      "label": "Show Tags Filters"
+    },
+    "Rss": {
+      "type": "checkbox",
+      "label": "Rss Feed"
+    }
+  }
+ 
+}

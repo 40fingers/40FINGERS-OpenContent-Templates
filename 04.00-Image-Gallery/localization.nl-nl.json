@@ -1,0 +1,17 @@
+{
+    "Title": "Titel",
+    "Date": "datum",
+    "ItemsPerPage": "Items per pagina",
+    "ByPage": "per pagina",
+    "ShowAll": "Toon alles",
+    "TextFilter": "Filter op titel",
+    "SortLabel": "Sorteren op",
+    "Loading": "Laden...",
+    "NoResults": "Geen resultaten gevonden",
+    "PageXofY": "<strong>Pagina {current} van {pages}</strong>",
+    "Tags": "Tags",
+    "OpenGallery": "Bekijk de foto's",
+    "GalleryPhotoCount": "Aantal Foto's",
+    "BackToList": "Terug naar overzicht"
+
+}

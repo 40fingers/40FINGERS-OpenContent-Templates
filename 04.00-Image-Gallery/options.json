@@ -1,0 +1,47 @@
+{
+  "fields": {
+    "Title": {
+      "type": "mltext"
+    },
+    "Summary": {
+      "type": "mltextarea"
+    },
+    "AlbumDate": {
+      "type": "date",
+      "picker": {
+        "format": "DD/MM/YYYY"
+      }
+    },
+    "Image": {
+      "type": "imagex",
+      "helper": "If not Set the First Image below will be used"
+    },
+    "Gallery": {
+      "type": "multiupload",
+      "items": {
+        "fields": {
+          "Title": {
+            "type": "mltext"
+          },
+          "Description": {
+            "type": "mltextarea"
+          },
+          "Image": {
+            "type": "image"
+          }
+        }
+      }
+    },
+    "Tags": {
+      "type": "select2",
+      "dataService": {
+        "action": "LookupData",
+        "data": {
+          "dataKey": "Tags",
+          "valueField": "Id",
+          "textField": "Tag"
+        }
+      }
+    }
+  }
+}
