@@ -1,0 +1,48 @@
+{
+  "formfields": [
+    {
+      "fieldname": "HTML",
+      "title": "HTML",
+      "fieldtype": "textarea",
+      "advanced": false
+    },
+    {
+      "fieldname": "scripts",
+      "title": "Scripts",
+      "fieldtype": "object",
+      "subfields": [
+        {
+          "fieldname": "script",
+          "title": "Script",
+          "fieldtype": "textarea",
+          "advanced": false
+        },
+        {
+          "fieldname": "scriptForEdit",
+          "title": "Load in Edit Mode?",
+          "fieldtype": "checkbox",
+          "advanced": true,
+          "required": false,
+          "hidden": false,
+          "default": "true",
+          "index": false,
+          "position": "1col1",
+          "dependencies": []
+        },
+        {
+          "fieldname": "scriptEnabled",
+          "title": "Enable Script Loading",
+          "fieldtype": "checkbox",
+          "advanced": false
+        }
+      ],
+      "advanced": true,
+      "required": false,
+      "hidden": false,
+      "default": "true",
+      "position": "1col1",
+      "dependencies": []
+    }
+  ],
+  "formtype": "object"
+}
