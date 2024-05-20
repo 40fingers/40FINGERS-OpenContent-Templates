@@ -1,0 +1,21 @@
+{
+  "formfields": [
+    {
+      "fieldname": "Bootstrap",
+      "title": "Include Bootstrap",
+      "fieldtype": "select",
+      "fieldoptions": [
+        {
+          "value": "4",
+          "text": "4"
+        },
+        {
+          "value": "5",
+          "text": "5"
+        }
+      ],
+      "advanced": false
+    }
+  ],
+  "formtype": "object"
+}

@@ -1,0 +1,12 @@
+{
+  "fields": {
+    "Bootstrap": {
+      "type": "select",
+      "sort": false,
+      "optionLabels": [
+        "4",
+        "5"
+      ]
+    }
+  }
+}
