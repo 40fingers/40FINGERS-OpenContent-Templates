@@ -1,0 +1,25 @@
+{{registerstylesheet "template.css"}}
+{{registerstylesheet "js/fancybox/jquery.fancybox.min.css"}}
+{{registerscript "js/fancybox/jquery.fancybox.min.js"}}
+
+<div class="oc-photo-album">
+
+    <div class="gallery-intro">
+        {{Settings.Intro}}
+    </div>
+
+
+    <div class="gallery-list-wrapper {{#if Settings.CropListImages}}list-image-crop{{else}}list-image-scale{{/if}}">
+        {{#each Items}}
+        {{#if Gallery}}
+        {{#each Gallery}}
+        <div class="photo_box">
+            <a href="{{Image}}" data-fancybox="gallery" data-caption="" title="">
+                <img src="{{Image}}?width=600" alt="" title="" class="gallery-icon unresponsive" />
+            </a>
+        </div>
+        {{/each}}
+        {{/if}}
+        {{/each}}
+    </div>
+</div>

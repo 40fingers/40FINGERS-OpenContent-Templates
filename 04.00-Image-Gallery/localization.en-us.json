@@ -1,0 +1,17 @@
+{
+    "Title": "Titlel",
+    "Date": "date",
+    "ItemsPerPage": "Items per page",
+    "ByPage": "per page",
+    "ShowAll": "Show all",
+    "TextFilter": "Filter by Title",
+    "SortLabel": "Sort by",
+    "Loading": "Loading...",
+    "NoResults": "No results found",
+    "PageXofY": "<strong>Page {current} of {pages}</strong>",
+    "Tags": "Tags",
+    "OpenGallery": "Show photos",
+    "GalleryPhotoCount": "Number of Photos",
+    "BackToList": "Back to overview"
+
+}

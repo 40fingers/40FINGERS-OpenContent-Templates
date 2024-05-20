@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "Intro":{
+      "type": "string"
+
+    },
+    "CropListImages":{
+      "type": "boolean"
+
+    },
+    "ShowSearch": {
+      "type": "boolean",
+      "default": true
+    },
+    
+    "Sort": {
+      "type": "boolean"
+    },
+    "Paging": {
+			"type": "object",
+			"title": "Paging",
+			"properties": {
+        "Enabled": {
+          "type": "boolean",
+          "default": true
+        },
+				
+				"ShowCurrentPage": {
+					"type": "boolean",
+          
+					"default": true
+				}
+			}
+		},
+    "PhotoCount": {
+      "type": "boolean"
+    },
+    "Tags": {
+      "type": "boolean"
+    },
+    "Rss": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "fields": {
+    "Intro": {
+      "type": "mlckeditor",
+      "label": "Intro text"
+    },
+    "CropListImages":{
+      "type": "checkbox",
+      "label": "Crop images in List"
+
+    }
+  }
+}
