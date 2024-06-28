@@ -1,0 +1,217 @@
+{{registerstylesheet "style.css"}}
+
+<style>
+/* You are not supposed to use inline CSS this way, but it's the best way to prevent users form having to load an extra file for testing */
+.ff-skin-text-content .block-head{
+	margin: 1.5em 0 1em; color: #bb4444; border-bottom:dotted 1px #444;
+}
+</style>
+
+<div class="ff-skin-text-content">
+<h1 class="block-head">About </h1>
+
+<p>The following tests, include most CSS classes used by DNN and some commonly used elements</p>
+
+<h2 class="block-head">Plain HTML Elements </h2>
+
+
+<h3 class="block-head">Headings </h3>
+
+
+<h1>Head H1</h1>
+<h2>Head H2</h2>
+<h3>Head H3</h3>
+<h4>Head H4</h4>
+<h5>Head H5</h5>
+<h6>Head H6</h6>
+<!-- Next -->
+
+
+<h3 class="block-head"> Headings inside a Link </h3>
+
+<h1><a href="https://www.40fingers.net" target="_blank">Head H1</a></h1>
+<h2><a href="https://www.40fingers.net">Head H2</a></h2>
+<h3><a href="https://www.40fingers.net">Head H3</a></h3>
+<h4><a href="https://www.40fingers.net">Head H4</a></h4>
+<h5><a href="https://www.40fingers.net">Head H5</a></h5>
+<h6><a href="https://www.40fingers.net">Head H6</a></h6>
+<!-- Next -->
+
+
+<h3 class="block-head"> Link inside Heading</h3>
+
+<a href="https://www.40fingers.net" target="_blank">
+<h1>Head H1</h1>
+</a>
+<a href="https://www.40fingers.net">
+<h2>Head H2</h2>
+</a>
+<a href="https://www.40fingers.net">
+<h3>Head H3</h3>
+</a>
+<a href="https://www.40fingers.net">
+<h4>Head H4</h4>
+</a>
+<a href="https://www.40fingers.net">
+<h5>Head H5</h5>
+</a>
+<a href="https://www.40fingers.net">
+<h6>Head H6</h6>
+</a>
+<!-- Next -->
+
+<h3 class="block-head"> Text in a < div ></h3>
+
+<div>Epsum factorial non <a href="https://www.40fingers.net" target="_blank">www.40fingers.net</a> quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. Souvlaki ignitus carborundum e pluribus unum. Defacto lingo est igpay atinlay. Marquee selectus non provisio incongruous feline nolo contendre. Gratuitous octopus niacin, sodium glutimate. Quote meon an estimate et non interruptus stadium. Sic</div>
+<!-- Next -->
+
+<h3 class="block-head"> Text Paragraphs < p ></h3>
+
+<p>Epsum factorial non <a href="https://www.40fingers.net" target="_blank">www.40fingers.net</a> quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. Souvlaki ignitus carborundum e pluribus unum. Defacto lingo est igpay atinlay. Marquee selectus non provisio incongruous feline nolo contendre. Gratuitous octopus niacin, sodium glutimate. Quote meon an estimate et non interruptus stadium. Sic</p>
+<p>Epsum factorial non <a href="https://www.40fingers.net" target="_blank">www.40fingers.net</a> quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. Souvlaki ignitus carborundum e pluribus unum. Defacto lingo est igpay atinlay. Marquee selectus non provisio incongruous feline nolo contendre. Gratuitous octopus niacin, sodium glutimate. Quote meon an estimate et non interruptus stadium. Sic</p>
+<!-- Next -->
+
+<h3 class="block-head"> Inline elements</h3>
+
+<p><a href="https://www.40fingers.net">Normal Link</a> ++ <a href="https://www.40fingers.net" target="_blank">Link to new Window</a></p>
+<p>This is Normal text</p>
+<p><em>This is Italic text < em ></em></p>
+<p><b>This is Bold text < b ></b></p>
+<p><strong>This is Strong text < strong ></strong></p>
+<p><small>This is small text < small ></small></p>
+
+<!-- Next -->
+
+
+
+<h3 class="block-head">Table</h3>
+
+<table>
+ <caption>Table Caption</caption>
+ <thead>
+  <tr>
+   <th>Header Row 1</th>
+   <th>Header Row 2</th>
+   <th>Header Row 3</th>
+  </tr>
+ </thead>
+ <tfoot>
+  <tr>
+   <td>Footer Row 1</td>
+   <td>Footer Row 2</td>
+   <td>Footer Row 3</td>
+  </tr>
+ </tfoot>
+ <tbody>
+  <tr>
+   <td>Row1 Cell1</td>
+   <td>Row1 Cell2</td>
+   <td>Row1 Cell3</td>
+  </tr>
+  <tr>
+   <td>Row2 Cell1</td>
+   <td>Row2 Cell2</td>
+   <td>Row2 Cell3</td>
+  </tr>
+  <tr>
+   <td>Row3 Cell1</td>
+   <td>Row3 Cell2</td>
+   <td>Row3 Cell3</td>
+  </tr>
+  <tr>
+   <td colspan="3">Row 4 colspan = 3</td>
+  </tr>
+ </tbody>
+</table>
+<!-- Next -->
+
+<h3 class="block-head">Lists</h3>
+
+<ul>
+ <li>Unordered Level 1
+ <ul>
+  <li>Unordered Level 2
+  <ul>
+   <li>Unordered Level 3</li>
+   <li>Unordered Level 3</li>
+   <li>Unordered Level 3</li>
+  </ul>
+  </li>
+  <li>Unordered Level 2</li>
+  <li>Unordered Level 2</li>
+ </ul>
+ </li>
+ <li>Mulitline test:&nbsp; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus; sapien id interdum pharetra, ipsum turpis venenatis metus; a pellentesque libero magna eu neque. In a ante et mi mollis porttitor. Maecenas vulputate sapien dui. Nam risus nisl, lacinia quis luctus gravida, ultrices at mauris. Proin convallis faucibus felis. Donec eget eros ligula, ac cursus ipsum. Suspendisse potenti.</li>
+ <li>Unordered Level 1</li>
+</ul>
+
+<ol>
+ <li>Ordered Level 1
+ <ol>
+  <li>Ordered Level 2
+  <ol>
+   <li>Ordered Level 3</li>
+   <li>Ordered Level 3</li>
+   <li>Ordered Level 3</li>
+  </ol>
+  </li>
+  <li>Ordered Level 2</li>
+  <li>Ordered Level 2</li>
+ </ol>
+ </li>
+ <li>Mulitline test:&nbsp; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus; sapien id interdum pharetra, ipsum turpis venenatis metus; a pellentesque libero magna eu neque. In a ante et mi mollis porttitor. Maecenas vulputate sapien dui. Nam risus nisl, lacinia quis luctus gravida, ultrices at mauris. Proin convallis faucibus felis. Donec eget eros ligula, ac cursus ipsum. Suspendisse potenti.</li>
+ <li>Ordered Level 1</li>
+</ol>
+<!-- Next -->
+
+
+<h2 class="block-head">DNN Specific</h2>
+
+
+<h3 class="block-head"> DNN Classes </h3>
+
+<p class="NormalBold">.NormalBold</p>
+<p class="NormalRed">.NormalRed</p>
+<p class="NormalDisabled">.NormalDisabled</p>
+<p class="Head">.Head</p>
+<p class="SubHead">.SubHead</p>
+<p class="SubSubHead">.SubSubHead</p>
+<!-- Next -->
+
+
+<h3 class="block-head"> DNN Tabs </h3>
+
+<ul class="dnnAdminTabNav dnnClear ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+        <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="msModuleSettings" aria-labelledby="ui-id-7" aria-selected="true" aria-expanded="true"><a href="#msModuleSettings" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-7">Tab 1</a></li>
+        <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="msPermissions" aria-labelledby="ui-id-8" aria-selected="false" aria-expanded="false"><a href="#msPermissions" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-8">Tab 2 with a longer text</a></li>
+        <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="msPageSettings" aria-labelledby="ui-id-9" aria-selected="false" aria-expanded="false"><a href="#msPageSettings" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-9">Tab 3</a></li>
+        
+</ul>
+
+
+<h3 class="block-head"> DNN Input </h3>
+
+<p>DNN Input:<br />
+<input class="NormalTextBox" name="TestInput" type="text" value="Test DNN Input" /><br />
+DNN Textarea:<br />
+<textarea class="NormalTextBox" cols="50" id="itsalltext_generated_id_lname_1" name="lname" rows="15" type="text">Test to see what a DNN Textbox looks like..</textarea><img alt="" src="chrome://itsalltext/locale/gumdrop.png" style="cursor: pointer ! important; display: none ! important; position: absolute ! important; padding: 0pt ! important; margin: 0pt ! important; border: medium none ! important; width: 28px ! important; height: 14px ! important; opacity: 0.0152174 ! important; left: 407px ! important; top: 1989px ! important;" title="It's All Text!" /><img alt="" src="chrome://itsalltext/locale/gumdrop.png" style="cursor: pointer ! important; display: none ! important; position: absolute ! important; padding: 0pt ! important; margin: 0pt ! important; border: medium none ! important; width: 28px ! important; height: 14px ! important; opacity: 0.0152174 ! important; left: 407px ! important; top: 1900px ! important;" title="It's All Text!" /><img alt="" src="chrome://itsalltext/locale/gumdrop.png" style="cursor: pointer ! important; display: none ! important; position: absolute ! important; padding: 0pt ! important; margin: 0pt ! important; border: medium none ! important; width: 28px ! important; height: 14px ! important; opacity: 0.0152174 ! important; left: 407px ! important; top: 1900px ! important;" title="It's All Text!" /><img alt="" src="chrome://itsalltext/locale/gumdrop.png" style="cursor: pointer ! important; display: none ! important; position: absolute ! important; padding: 0pt ! important; margin: 0pt ! important; border: medium none ! important; width: 28px ! important; height: 14px ! important; opacity: 0.0152174 ! important; left: 272px ! important; top: 1408px ! important;" title="It's All Text!" /><br />
+<input type="submit" value="Submit Button" /></p>
+<!-- Next -->
+	
+	
+<h3 class="block-head"> DNN Buttons</h3>
+	
+<ul class="dnnActions dnnClear">
+	<li>
+		<a id="dnn_cmdUpdate" title="Update" class="dnnPrimaryAction" href="#">Update</a></li>
+	<li>
+		<a id="dnn_cmdDelete" title="Delete" class="dnnSecondaryAction" href="#)">Delete</a></li>
+	<li>
+		<a id="dnn_cancelHyperLink" class="dnnSecondaryAction" href="#">Cancel</a></li>
+</ul>
+
+
+<h3 class="block-head"> DNN Legacy Button</h3>
+<p><a class="CommandButton" href="#">CommandButton</a></p>
+<!-- Next -->
+</div>
