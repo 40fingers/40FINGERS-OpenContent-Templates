@@ -1,0 +1,15 @@
+{
+	"editWitoutPostback": true,
+    "index": true,
+    "templates": {
+		"template": {
+            "type": "single",
+            "main": {
+                "template": "template.hbs",
+				"clientSideData": false,
+				"dnnsearch": false
+            }
+        }
+    }
+
+}

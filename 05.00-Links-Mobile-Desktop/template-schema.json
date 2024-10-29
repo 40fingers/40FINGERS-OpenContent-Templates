@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    
+    "Mobile": {
+      "type": "boolean",
+      "title": "Visible on Mobile"
+    },
+	"Desktop": {
+      "type": "boolean",
+      "title": "Visible on Desktop"
+    }
+  }
+}
