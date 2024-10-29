@@ -1,0 +1,31 @@
+{
+  "fields": {
+   
+    "ModuleTitle": {
+      "type": "text"
+    },
+    "Text": {
+      "type": "ckeditor",
+      "configset": "full"
+    },
+    "Links": {
+      "type": "accordion",
+      "items": {
+        "fields": {
+          "Title": {
+           
+          },
+		"Title": {
+           
+          },
+          "Link": {
+            "type": "url"
+          },
+		  "Icon": {
+            "type": "icon"
+          }
+        }
+      }
+    }
+  }
+}

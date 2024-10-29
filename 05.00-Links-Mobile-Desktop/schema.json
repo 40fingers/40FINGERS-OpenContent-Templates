@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "properties": {
+    
+    "ModuleTitle": {
+      "type": "string",
+      "title": "Title"
+    },
+    "Links": {
+      "type": "array",
+      "title": "Links",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Text": {
+            "type": "string",
+            "title": "Link Text"
+          },
+			"Hint": {
+            "type": "string",
+            "title": "Link Hint"
+          },
+          "Link": {
+            "type": "string",
+            "title": "Link"
+          },
+		  "Icon": {
+            "type": "string",
+            "title": "Icon"
+          }
+
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.oc-links-list h3{
+margin-bottom: 0.7em;	
+}
+.oc-links-list ul{
+	padding: 0 0 1em;
+	margin: 0;
+}
+.oc-links-list ul li{
+	padding: 0 0 0.8em;
+	font-weight: bold;
+	list-style-type:none;
+}
+.oc-links-list ul li .fa{
+	margin-right: 0.5em;
+}
+
+.oc-links-list ul li a:visited{
+	color: #37436e;
+}
+
+.oc-links-list.d-mobile{
+	display: block;
+}
+
+.oc-links-list.h-mobile{
+	display: none;
+}
+
+
+
+
+@media screen and (min-width: 768px){
+	.oc-links-list.d-desktop{
+		display: block;
+	}
+	.oc-links-list.h-desktop{
+		display: none;
+	}
+	
+}
+
+/* Hidden on Mobile */
+	.dnnEditState .oc-links-list.h-mobile{
+		display: block;
+	}
+	
+	
+	.dnnEditState .oc-links-list.h-mobile:before{
+		content:"Hidden on Mobile (in view mode)";
+		display:block;
+		color: #f80;
+	}
+	
+/* Hidden on Desktop */
+	.dnnEditState .oc-links-list.h-desktop{
+		display: block;
+	}
+	
+	
+	.dnnEditState .oc-links-list.h-desktop:before{
+		content:"Hidden on Desktop (in view mode)";
+		display:block;
+		color: #f80;
+	}

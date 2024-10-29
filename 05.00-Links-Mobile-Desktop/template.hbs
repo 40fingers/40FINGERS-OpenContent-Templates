@@ -1,0 +1,14 @@
+<div class="oc-links-list {{#if Settings.Mobile}}d{{else}}h{{/if}}-mobile {{#if Settings.Desktop}}d{{else}}h{{/if}}-desktop" >
+	<div class="oc-content">
+	{{#if ModuleTitle}}<h3>{{ModuleTitle}}</h3>{{/if}}
+	<ul class="oc-list-items">
+	{{#each Links}}
+	<li>
+	<a href="{{Link}}" {{#if Hint}} title="{{Hint}}"{{/if}}>{{#if Icon}}<i class="fa {{Icon}}"></i>{{/if}}{{Text}}</a>
+	</li>
+	{{/each}}
+			
+	</ul>
+	</div>
+</div>
+
