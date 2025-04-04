@@ -23,15 +23,10 @@
     breadcrumbs = new ArrayList(Dnn.Portal.ActiveTab.BreadCrumbs); // Ensure breadcrumbs is initialized
 
 
-    if (Model.ParentLevel != null)
-    {
+
         debugHelper.AddDebugLine(loc.DebugMode, Model.Mode); // Log the mode
         parentId = getStartPage(Model.Mode, selectedPage, Level, debugHelper); // Pass DebugHelper to the function
-    }
-    else
-    {
-        debugHelper.AddDebugLine(loc.DebugNoParent); // Log if no parent is found
-    }
+
 
     var tabs = tc.GetTabsByPortal(pid)
                  .WithParentId(parentId)
@@ -190,32 +185,43 @@
 
 
 
-@if (SafeStr(Model.Title) + SafeStr(Model.Text) != ""){
-    if(Model.Title !=""){
-        <h3 class="oc-menu-title">@Model.Title</h3>
+    @if (SafeStr(Model.Title) + SafeStr(Model.Text) != ""){
+        <div class="oc-intro">
+            @if(Model.Title !=""){
+                <h3 class="oc-menu-title">@Model.Title</h3>
+            }
+            @if(Model.Text !=""){
+                <div class="oc-menu-text">@Model.Text</div>
+            }
+        </div>
     }
-    if(Model.Text !=""){
-        <div class="oc-menu-text">@Model.Text</div>
-    }
-}
 
 
     @if (parentId != noTab) {
-        <ul class="oc-menu-root">
-            @foreach (var tab in tabs) { 
-                if (tab.HasBeenPublished && tab.IsVisible && !tab.IsDeleted && 
-                    DotNetNuke.Security.Permissions.TabPermissionController.CanViewPage(tab)) {
-                    
-                    string activeClass = (tabId == tab.TabID) ? "active" : "";
-                    
-                    <li class="oc-menu-item @activeClass">
-                        <a href="@tab.FullUrl" class="oc-menu-link @activeClass" aria-haspopup="false">
-                            <span>@tab.TabName</span>
-                        </a>
-                    </li>
+        <div class="oc-menu-wrapper">
+            <ul class="oc-menu-root">
+                @foreach (var tab in tabs) { 
+                    if (tab.HasBeenPublished && tab.IsVisible && !tab.IsDeleted && 
+                        DotNetNuke.Security.Permissions.TabPermissionController.CanViewPage(tab)) {
+                        
+                        string activeClass = "";
+
+                        if(tabId == tab.TabID){
+                            activeClass = "active";
+                        }else{
+                            if(breadcrumbs.Cast<TabInfo>().Any(bc => bc.TabID == tab.TabID)){
+                                activeClass = "active-parent";
+                            }
+                        }
+                        <li class="oc-menu-item @activeClass">
+                            <a href="@tab.FullUrl" class="oc-menu-link @activeClass" aria-haspopup="false">
+                                <span>@tab.TabName</span>
+                            </a>
+                        </li>
+                    }
                 }
-            }
-        </ul>
+            </ul>
+        </div>
     }
 
         @if(isAdminOrHost()){
