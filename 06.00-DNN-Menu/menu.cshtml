@@ -88,26 +88,27 @@
             
             break;
 
-        case "Level":
-            // Level logic is handled below
-            break;
-
+        case "Level": // Level logic is handled below
+            
             debugHelper.AddDebugLine(Loc.DebugBreadcrumb, breadcrumbs.Count);
 
-            if (Level < breadcrumbs.Count)
-            {
-                var bcTab = breadcrumbs[Level] as DotNetNuke.Entities.Tabs.TabInfo; // Safe casting
-                if (bcTab != null)
-                {
+            if (Level < breadcrumbs.Count) {
+                var bcTab = breadcrumbs[Level] as DotNetNuke.Entities.Tabs.TabInfo;
+                if (bcTab != null) {
                     retVal = bcTab.TabID;
                     parentPage = bcTab.TabName;
                 }
-            }
-            else
-            {
-                parentPage = Loc.DebugNoBreadcrumb;
+                else {
+                parentPage = Loc.DebugNoBreadcrumb + Level;
                 retVal = noTab;
-}
+                 }
+
+            } else {
+                parentPage = Loc.DebugNoBreadcrumb + Level;
+                retVal = noTab;
+            }
+
+            break;
 
         default:
             parentPage = Loc.DebugParentNone;
@@ -148,7 +149,7 @@
         public DebugHelper()
         {
             _debugMessages = new List<string>();
-            DebugLineTemplate = "<div class=\"oc-debug\">{0}{1}</div>";
+            DebugLineTemplate = "<div class=\"oc-debug\"><strong>{0}</strong>{1}</div>";
             DebugLogTemplate = "<div class=\"oc-debug-log\"><h4 class=\"oc-debug-title\">{0}:</h4>{1}</div>";
         }
 
