@@ -1,3 +1,7 @@
+.oc-menu .oc-intro{
+    margin-bottom: 2em;
+}
+
 .oc-debug-log{
     --border: solid 1px #ddd;
     --background: #f4f4f4;
