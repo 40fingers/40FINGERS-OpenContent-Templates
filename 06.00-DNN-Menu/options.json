@@ -1,0 +1,37 @@
+{
+  "fields": {
+    "Title": {
+      "dependencies": {},
+      "type": "text"
+    },
+    "Text": {
+      "dependencies": {},
+      "type": "ckeditor",
+      "configset": "basic"
+    },
+    "Mode": {
+      "multilanguage": true,
+      "dependencies": {},
+      "helper": "",
+      "type": "select",
+      "optionLabels": [
+        "Root Menu",
+        "Childeren of Current Page",
+        "Siblings of Current Page",
+        "A Specific Page's Children",
+        "Page on Level x in Breadcrumb"
+      ]
+    },
+    "ParentPage": {
+      /*"dependencies": {
+        "Mode": "Page"
+      },*/
+      "type": "page"
+    },
+    "Level": {
+      /*"dependencies": {
+        "Mode": "Level"
+      }*/
+    }
+  }
+}

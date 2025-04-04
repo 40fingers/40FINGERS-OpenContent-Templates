@@ -1,0 +1,16 @@
+{
+    "editWitoutPostback": true,
+    "index": true,
+
+    "templates": {
+        "template": {
+            "type": "single",
+            "title": "Default",            
+            "main": {
+                "template": "menu.cshtml",
+				"clientSideData": false
+            }
+        }
+    }
+
+}
