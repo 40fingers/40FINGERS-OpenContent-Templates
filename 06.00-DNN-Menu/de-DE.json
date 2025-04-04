@@ -2,9 +2,11 @@
     "DebugTitle": "Menüeinstellungen",
     "DebugMode": "Modus",
     "DebugBreadcrumb": "Anzahl der Seiten im Breadcrumb",
-    "DebugParentShown": "Unterseiten von anzeigen",
+    "DebugParentShown": "Angezeigte Seiten",
     "DebugParentRoot": "Wurzel",
     "DebugNoParent": "Kein Filter gesetzt",
     "DebugNoBreadcrumb": "Keine Seite im Breadcrumb auf Ebene: ",
-    "DebugPageNotFound": "Seite nicht gefunden"
+    "DebugPageNotFound": "Seite nicht gefunden",
+    "DebugChildren": "Kinder",
+    "DebugSiblings": "Geschwister"
 }

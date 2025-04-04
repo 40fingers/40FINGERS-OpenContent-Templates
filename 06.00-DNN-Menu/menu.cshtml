@@ -52,7 +52,10 @@
 
     public DebugHelper debugHelper = new DebugHelper(); // Initialize DebugHelper
 
-
+    DotNetNuke.Entities.Tabs.TabInfo GetTabByTabId(int id) {
+        var tc = new DotNetNuke.Entities.Tabs.TabController();
+        return tc.GetTab(id, Dnn.Portal.PortalId, false);
+    }
 
     // Get the starting page based on the specified level
     int getStartPage(string Mode, TabInfo StartPage, int Level, DebugHelper debugHelper) {
@@ -69,12 +72,12 @@
 
         case "CurrentChildren":
             retVal = Dnn.Tab.TabID; // Current page's children
-            parentPage = Dnn.Tab.TabName;
+            parentPage = Dnn.Tab.TabName + " > " + Loc.DebugChildren;
             break;
 
         case "CurrentSiblings":
             retVal = Dnn.Tab.ParentId; // Current page's siblings
-            parentPage = Loc.DebugParentSiblings;
+            parentPage = Dnn.Tab.TabName + " > " + Loc.DebugSiblings;
             break;
 
         case "Page":
@@ -95,8 +98,8 @@
             if (Level < breadcrumbs.Count) {
                 var bcTab = breadcrumbs[Level] as DotNetNuke.Entities.Tabs.TabInfo;
                 if (bcTab != null) {
-                    retVal = bcTab.TabID;
-                    parentPage = bcTab.TabName;
+                    retVal = bcTab.ParentId;
+                    parentPage = bcTab.TabName + " > " + Loc.DebugSiblings;
                 }
                 else {
                 parentPage = Loc.DebugNoBreadcrumb + Level;
