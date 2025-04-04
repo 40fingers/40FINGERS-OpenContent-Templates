@@ -2,9 +2,11 @@
     "DebugTitle": "Menu Settings",
     "DebugMode": "Mode",
     "DebugBreadcrumb": "Page Count in Breadcrumb",
-    "DebugParentShown": "Show Child Pages of",
+    "DebugParentShown": "Pages Shown",
     "DebugParentRoot": "Root",
     "DebugNoParent": "No Filter Set",
     "DebugNoBreadcrumb": "No Page in Breadcrumb on Level: ",
-    "DebugPageNotFound": "Page Not Found"
+    "DebugPageNotFound": "Page Not Found",
+    "DebugChildren": "Children",
+    "DebugSiblings": "Siblings"
 }
