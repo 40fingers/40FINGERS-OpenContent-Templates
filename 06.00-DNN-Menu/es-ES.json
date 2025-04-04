@@ -5,6 +5,6 @@
     "DebugParentShown": "Mostrar páginas secundarias de",
     "DebugParentRoot": "Raíz",
     "DebugNoParent": "No se ha establecido ningún filtro",
-    "DebugNoBreadcrumb": "No hay página en la ruta de navegación en el nivel",
+    "DebugNoBreadcrumb": "No hay página en la ruta de navegación en el nivel: ",
     "DebugPageNotFound": "Página no encontrada"
 }

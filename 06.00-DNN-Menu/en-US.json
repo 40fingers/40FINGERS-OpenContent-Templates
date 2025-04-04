@@ -5,6 +5,6 @@
     "DebugParentShown": "Show Child Pages of",
     "DebugParentRoot": "Root",
     "DebugNoParent": "No Filter Set",
-    "DebugNoBreadcrumb": "No Page in Breadcrumb on Level",
+    "DebugNoBreadcrumb": "No Page in Breadcrumb on Level: ",
     "DebugPageNotFound": "Page Not Found"
 }

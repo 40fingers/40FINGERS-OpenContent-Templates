@@ -5,6 +5,6 @@
     "DebugParentShown": "Afficher les pages enfants de",
     "DebugParentRoot": "Racine",
     "DebugNoParent": "Aucun filtre défini",
-    "DebugNoBreadcrumb": "Aucune page dans le fil d'Ariane au niveau",
+    "DebugNoBreadcrumb": "Aucune page dans le fil d'Ariane au niveau : ",
     "DebugPageNotFound": "Page introuvable"
 }

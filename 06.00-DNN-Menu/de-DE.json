@@ -5,6 +5,6 @@
     "DebugParentShown": "Unterseiten von anzeigen",
     "DebugParentRoot": "Wurzel",
     "DebugNoParent": "Kein Filter gesetzt",
-    "DebugNoBreadcrumb": "Keine Seite im Breadcrumb auf Ebene",
+    "DebugNoBreadcrumb": "Keine Seite im Breadcrumb auf Ebene: ",
     "DebugPageNotFound": "Seite nicht gefunden"
 }
