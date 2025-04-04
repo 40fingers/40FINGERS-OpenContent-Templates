@@ -2,11 +2,11 @@
   "type": "object",
   "properties": {
     "Title": {
-      "title": "Test shown above the Menu",
+      "title": "Title shown above the Menu",
       "type": "string"
     },
     "Text": {
-      "title": "Test shown above the Menu",
+      "title": "Text shown above the Menu",
       "type": "string"
     },
     "Mode": {
