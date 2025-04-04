@@ -1,0 +1,10 @@
+{
+    "DebugTitle": "Menu Settings",
+    "DebugMode": "Mode",
+    "DebugBreadcrumb": "Page Count in Breadcrumb",
+    "DebugParentShown": "Show Child Pages of",
+    "DebugParentRoot": "Root",
+    "DebugNoParent": "No Filter Set",
+    "DebugNoBreadcrumb": "No Page in Breadcrumb on Level",
+    "DebugPageNotFound": "Page Not Found"
+}

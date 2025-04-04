@@ -1,0 +1,6 @@
+@Name = ""
+@Text = ""
+I want to change the selected Text into Localized Text, Name: @Name and the text in English @Text.
+Can you make that change and adjust the tranlations?
+------------
+Can you update README.html with the changes in README.md but leave the examples out?

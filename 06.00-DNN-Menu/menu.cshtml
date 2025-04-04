@@ -1,0 +1,220 @@
+@using System
+@using System.Collections
+@using DotNetNuke.Entities.Tabs
+
+@inherits Satrabel.OpenContent.Components.OpenContentWebPage
+
+@{ 
+    var tc = new DotNetNuke.Entities.Tabs.TabController();
+    var pid = Dnn.Portal.PortalId;
+    var tabId = Dnn.Tab.TabID;
+    int parentId = -1;
+
+    var selectedPage = Model.ParentPage != null ? tc.GetTab(Convert.ToInt32(Model.ParentPage.id), pid) : null;
+    int Level = 0;
+    
+    if(Model.Level != null){
+        Level = Model.Level;
+    };
+
+    dynamic loc = Model.Localization;
+    Loc = loc;
+
+    breadcrumbs = new ArrayList(Dnn.Portal.ActiveTab.BreadCrumbs); // Ensure breadcrumbs is initialized
+
+
+    if (Model.ParentLevel != null)
+    {
+        debugHelper.AddDebugLine(loc.DebugMode, Model.Mode); // Log the mode
+        parentId = getStartPage(Model.Mode, selectedPage, Level, debugHelper); // Pass DebugHelper to the function
+    }
+    else
+    {
+        debugHelper.AddDebugLine(loc.DebugNoParent); // Log if no parent is found
+    }
+
+    var tabs = tc.GetTabsByPortal(pid)
+                 .WithParentId(parentId)
+                 .Where(tab => tab.HasBeenPublished && tab.IsVisible && !tab.IsDeleted &&
+                               DotNetNuke.Security.Permissions.TabPermissionController.CanViewPage(tab));
+}
+
+@functions {
+
+    bool isAdminOrHost(){
+        return isEditMode();
+    }
+
+    public int noTab = -999;
+    public ArrayList breadcrumbs = new ArrayList(); // Ensure initialization
+
+    public dynamic Loc;
+
+    public DebugHelper debugHelper = new DebugHelper(); // Initialize DebugHelper
+
+
+
+    // Get the starting page based on the specified level
+    int getStartPage(string Mode, TabInfo StartPage, int Level, DebugHelper debugHelper) {
+        int retVal = -1;
+
+        string parentPage = Loc.DebugParentRoot;
+
+    switch (Mode)
+    {
+        case "Root":
+            retVal = -1; // Root level
+            parentPage = Loc.DebugParentRoot;
+            break;
+
+        case "CurrentChildren":
+            retVal = Dnn.Tab.TabID; // Current page's children
+            parentPage = Dnn.Tab.TabName;
+            break;
+
+        case "CurrentSiblings":
+            retVal = Dnn.Tab.ParentId; // Current page's siblings
+            parentPage = Loc.DebugParentSiblings;
+            break;
+
+        case "Page":
+            if(StartPage != null){
+                retVal = StartPage.TabID; // Current page
+                parentPage = StartPage.TabName;
+            }else{
+                retVal = noTab;
+                parentPage = Loc.DebugPageNotFound;
+            }
+            
+            break;
+
+        case "Level":
+            // Level logic is handled below
+            break;
+
+            debugHelper.AddDebugLine(Loc.DebugBreadcrumb, breadcrumbs.Count);
+
+            if (Level < breadcrumbs.Count)
+            {
+                var bcTab = breadcrumbs[Level] as DotNetNuke.Entities.Tabs.TabInfo; // Safe casting
+                if (bcTab != null)
+                {
+                    retVal = bcTab.TabID;
+                    parentPage = bcTab.TabName;
+                }
+            }
+            else
+            {
+                parentPage = Loc.DebugNoBreadcrumb;
+                retVal = noTab;
+}
+
+        default:
+            parentPage = Loc.DebugParentNone;
+            retVal = noTab; // No valid mode
+            break;
+    }
+
+
+        
+        debugHelper.AddDebugLine(Loc.DebugParentShown, parentPage);
+
+        return retVal;
+    }
+
+    bool isEditMode() {
+        return DotNetNuke.Entities.Portals.PortalSettings.Current.UserMode == DotNetNuke.Entities.Portals.PortalSettings.Mode.Edit;
+    }
+
+    public string SafeStr(object value, string defaultValue = "")
+    {
+        if (value == null) return defaultValue;
+
+        var str = value as string; // Old syntax for type checking
+        if (str != null && !string.IsNullOrWhiteSpace(str))
+            return str;
+
+        return value.ToString();
+    }
+
+
+    public class DebugHelper
+    {
+        private readonly List<string> _debugMessages;
+
+        public string DebugLineTemplate { get; set; }
+        public string DebugLogTemplate { get; set; }
+
+        public DebugHelper()
+        {
+            _debugMessages = new List<string>();
+            DebugLineTemplate = "<div class=\"oc-debug\">{0}{1}</div>";
+            DebugLogTemplate = "<div class=\"oc-debug-log\"><h4 class=\"oc-debug-title\">{0}:</h4>{1}</div>";
+        }
+
+        public void AddDebugLine(string message)
+        {
+            AddDebugLine(message, "");
+        }
+
+        public void AddDebugLine(string message, int value)
+        {
+            AddDebugLine(message, value.ToString());
+        }
+
+        public void AddDebugLine(string message, string value)
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                value = ": " + value;
+            }
+            _debugMessages.Add(String.Format(DebugLineTemplate, message, value));
+        }
+
+        public string GetDebugInfo(string title)
+        {
+            var debugContent = String.Join("", _debugMessages);
+            return String.Format(DebugLogTemplate, title, debugContent);
+        }
+    }
+
+
+
+}
+
+<div class="oc-menu">
+
+
+
+@if (SafeStr(Model.Title) + SafeStr(Model.Text) != ""){
+    if(Model.Title !=""){
+        <h3 class="oc-menu-title">@Model.Title</h3>
+    }
+    if(Model.Text !=""){
+        <div class="oc-menu-text">@Model.Text</div>
+    }
+}
+
+
+    @if (parentId != noTab) {
+        <ul class="oc-menu-root">
+            @foreach (var tab in tabs) { 
+                if (tab.HasBeenPublished && tab.IsVisible && !tab.IsDeleted && 
+                    DotNetNuke.Security.Permissions.TabPermissionController.CanViewPage(tab)) {
+                    
+                    string activeClass = (tabId == tab.TabID) ? "active" : "";
+                    
+                    <li class="oc-menu-item @activeClass">
+                        <a href="@tab.FullUrl" class="oc-menu-link @activeClass" aria-haspopup="false">
+                            <span>@tab.TabName</span>
+                        </a>
+                    </li>
+                }
+            }
+        </ul>
+    }
+
+        @if(isAdminOrHost()){
+        @debugHelper.GetDebugInfo(Loc.DebugTitle)
+    }
+</div>

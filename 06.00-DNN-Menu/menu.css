@@ -1,0 +1,22 @@
+.oc-debug-log{
+    --border: solid 1px #ddd;
+    --background: #f4f4f4;
+    --color: #444;
+}
+
+.oc-debug-log{
+    font-size: 0.8em;
+    border: var(--border);
+    background: var(--background);
+    color: var(--color);
+    padding: 1em;
+    margin: 0 0 1em;
+    width: 300px;
+
+}
+
+.oc-debug-title{
+    color: var(--color);
+    font-size: 1.2em;
+    margin: 0;
+}

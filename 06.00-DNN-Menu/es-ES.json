@@ -1,0 +1,10 @@
+{
+    "DebugTitle": "Configuración del menú",
+    "DebugMode": "Modo",
+    "DebugBreadcrumb": "Cantidad de páginas en la ruta de navegación",
+    "DebugParentShown": "Mostrar páginas secundarias de",
+    "DebugParentRoot": "Raíz",
+    "DebugNoParent": "No se ha establecido ningún filtro",
+    "DebugNoBreadcrumb": "No hay página en la ruta de navegación en el nivel",
+    "DebugPageNotFound": "Página no encontrada"
+}

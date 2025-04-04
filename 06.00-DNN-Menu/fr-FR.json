@@ -1,0 +1,10 @@
+{
+    "DebugTitle": "Paramètres du menu",
+    "DebugMode": "Mode",
+    "DebugBreadcrumb": "Nombre de pages dans le fil d'Ariane",
+    "DebugParentShown": "Afficher les pages enfants de",
+    "DebugParentRoot": "Racine",
+    "DebugNoParent": "Aucun filtre défini",
+    "DebugNoBreadcrumb": "Aucune page dans le fil d'Ariane au niveau",
+    "DebugPageNotFound": "Page introuvable"
+}
