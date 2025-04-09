@@ -1,5 +1,6 @@
 {
-    "editWitoutPostback": true,
+    "builderVersion": 1,
+	"editWitoutPostback": true,
     "editRole": "",
     "Index": true, /* Required for search */
     "detailMetaTitle": "{{Title}}",
