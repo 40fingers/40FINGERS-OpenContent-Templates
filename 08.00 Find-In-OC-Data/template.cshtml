@@ -1,0 +1,52 @@
+@using System
+@using System.Text
+@using System.Data.SqlClient
+@inherits Satrabel.OpenContent.Components.OpenContentWebPage
+
+@{
+
+	var searchText = "";
+	if(Model.Settings != null){
+		searchText = Model.Settings.SearchText;
+	}
+
+	var intPortalId = Dnn.Portal.PortalId;
+	var strPortalAlias = Dnn.Portal.PortalAlias;
+	
+	var db = Database.Open("SiteSqlServer");
+	var txtSql = @"SELECT  Tabs.PortalID, Tabs.Tabid, Tabs.TabName, Tabs.TabPath, OpenContent_Items.ModuleId, '<a href=""/default.aspx?tabid=' + CONVERT(nvarchar, Tabs.Tabid) + '"" target=""_blank"">Link</a>' AS Link
+FROM            TabModules INNER JOIN
+                         Tabs ON TabModules.TabID = Tabs.TabID INNER JOIN
+                         OpenContent_Items ON TabModules.ModuleID = OpenContent_Items.ModuleId
+						 Where OpenContent_Items.Json like '%{0}%';";
+						 
+						 txtSql = String.Format(txtSql, searchText);
+	 
+	 string tableOpen = "<table><tr><th>PortalId</th><th>ModuleId</th><th>Page Name</th><th>Page Name</th><th>Path</th><th>Page Link</th></tr>";
+	 string tableClose = "</table>";
+	 
+}
+
+@if(searchText != ""){
+	<div class="oc-template-list">
+		
+		@Html.Raw(tableOpen)
+		
+			@foreach(var row in db.Query(txtSql)) {
+			
+				<tr>
+					<td>@row.PortalID</td>
+					<td>@row.ModuleId</td>
+					<td>@row.TabId</td>
+					<td>@row.TabName</td>
+					<td>@row.TabPath</td>
+					<td>@Html.Raw(row.Link)</td>
+				</tr>
+				
+			}
+			
+			@Html.Raw(tableClose)
+
+	</div>
+}
+
