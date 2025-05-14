@@ -1,13 +1,13 @@
 {
     "DebugTitle": "Menu Settings",
     "DebugMode": "Mode",
-    "DebugBreadcrumb": "Page Count in Breadcrumb",
-    "DebugParentShown": "Child Pages of",
-    "DebugParentRoot": "Root",
-    "DebugNoParent": "No Filter Set",
-    "DebugNoBreadcrumb": "No Page in Breadcrumb on Level: ",
+    "DebugShow": "Show",
+    "DebugModeRootMessage": "Pages in the Root of this site",
+    "DebugModePageMessage": "Show Child Pages of (fixed) Page",
+    "DebugModeChildrenMessage": "Show Child Pages of current Page",
+    "DebugModeSiblingsMessage": "Show Siblings of current Page",
+    "DebugBreadcrumbMessage": "Show Children of page in Active Breadcrumb on Level",
+    "DebugNoBreadcrumb": "No Page in Active Breadcrumb on Level",
     "DebugPageNotFound": "Page Not Found",
-    "DebugChildren": "Children",
-    "DebugSiblings": "Siblings",
     "DebugIgnoreDisplayMenu": "Ignore Page Display Setting"
 }

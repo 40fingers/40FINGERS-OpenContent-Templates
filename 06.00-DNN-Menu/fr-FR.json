@@ -1,13 +1,13 @@
 {
     "DebugTitle": "Paramètres du menu",
     "DebugMode": "Mode",
-    "DebugBreadcrumb": "Nombre de pages dans le fil d'Ariane",
-    "DebugParentShown": "Pages affichées",
-    "DebugParentRoot": "Racine",
-    "DebugNoParent": "Aucun filtre défini",
-    "DebugNoBreadcrumb": "Aucune page dans le fil d'Ariane au niveau : ",
+    "DebugShow": "Afficher",
+    "DebugModeRootMessage": "Pages à la racine de ce site",
+    "DebugModePageMessage": "Afficher les pages enfants de la page (fixe)",
+    "DebugModeChildrenMessage": "Afficher les pages enfants de la page actuelle",
+    "DebugModeSiblingsMessage": "Afficher les pages sœurs de la page actuelle",
+    "DebugBreadcrumbMessage": "Afficher les pages enfants de la page dans le fil d'Ariane actif au niveau",
+    "DebugNoBreadcrumb": "Aucune page dans le fil d'Ariane actif au niveau",
     "DebugPageNotFound": "Page introuvable",
-    "DebugChildren": "Enfants",
-    "DebugSiblings": "Frères et sœurs",
     "DebugIgnoreDisplayMenu": "Ignorer le paramètre d'affichage de la page"
 }

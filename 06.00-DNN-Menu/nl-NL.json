@@ -1,13 +1,13 @@
 {
     "DebugTitle": "Menu-instellingen",
     "DebugMode": "Modus",
-    "DebugBreadcrumb": "Aantal pagina's in de broodkruimelnavigatie",
-    "DebugParentShown": "Dochter Pagina's weergegeven van",
-    "DebugParentRoot": "Root",
-    "DebugNoParent": "Geen filter ingesteld",
-    "DebugNoBreadcrumb": "Geen pagina in de broodkruimelnavigatie op niveau: ",
+    "DebugShow": "Weergeven",
+    "DebugModeRootMessage": "Pagina's in de root van deze site",
+    "DebugModePageMessage": "Toon dochterpagina's van (vaste) pagina",
+    "DebugModeChildrenMessage": "Toon dochterpagina's van de huidige pagina",
+    "DebugModeSiblingsMessage": "Toon broers en zussen van de huidige pagina",
+    "DebugBreadcrumbMessage": "Toon dochterpagina's van de pagina in de actieve broodkruimelnavigatie op niveau",
+    "DebugNoBreadcrumb": "Geen pagina in de actieve broodkruimelnavigatie op niveau",
     "DebugPageNotFound": "Pagina niet gevonden",
-    "DebugChildren": "Kinderen",
-    "DebugSiblings": "Broers en zussen",
     "DebugIgnoreDisplayMenu": "Negeer paginaweergave-instelling"
 }

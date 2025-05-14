@@ -67,47 +67,52 @@
         case "Root":
             retVal = -1; // Root level
             parentPage = Loc.DebugParentRoot;
+            debugHelper.AddDebugLine(Loc.DebugShow, Loc.DebugModeRootMessage);
             break;
 
         case "CurrentChildren":
             retVal = Dnn.Tab.TabID; // Current page's children
-            parentPage = Dnn.Tab.TabName + " > " + Loc.DebugChildren;
+            parentPage = Dnn.Tab.TabName;
+            debugHelper.AddDebugLine(Loc.DebugModeChildrenMessage, parentPage);
             break;
 
         case "CurrentSiblings":
             retVal = Dnn.Tab.ParentId; // Current page's siblings
-            parentPage = Dnn.Tab.TabName + " > " + Loc.DebugSiblings;
+            parentPage = Dnn.Tab.TabName;
+            debugHelper.AddDebugLine(Loc.DebugModeSiblingsMessage, parentPage);
             break;
 
         case "Page":
             if(StartPage != null){
                 retVal = StartPage.TabID; // Current page
                 parentPage = StartPage.TabName;
+                debugHelper.AddDebugLine(Loc.DebugModePageMessage, parentPage);
             }else{
                 retVal = noTab;
-                parentPage = Loc.DebugPageNotFound;
+                debugHelper.AddDebugLine(Loc.DebugPageNotFound);
             }
             
             break;
 
         case "Level": // Level logic is handled below
             
-            debugHelper.AddDebugLine(Loc.DebugBreadcrumb, breadcrumbs.Count);
-
+           
             if (Level < breadcrumbs.Count) {
                 var bcTab = breadcrumbs[Level] as DotNetNuke.Entities.Tabs.TabInfo;
                 if (bcTab != null) {
                     retVal = bcTab.ParentId;
-                    parentPage = bcTab.TabName + " > " + Loc.DebugSiblings;
+                    debugHelper.AddDebugLine(Loc.DebugBreadcrumbMessage, Level);
                 }
                 else {
-                parentPage = Loc.DebugNoBreadcrumb + Level;
-                retVal = noTab;
+                    parentPage = Loc.DebugNoBreadcrumb + Level;
+                    retVal = noTab;
+                     debugHelper.AddDebugLine(Loc.DebugNoBreadcrumb, Level);
                  }
 
             } else {
                 parentPage = Loc.DebugNoBreadcrumb + Level;
                 retVal = noTab;
+                 debugHelper.AddDebugLine(Loc.DebugNoBreadcrumb, Level);
             }
 
             break;
@@ -120,7 +125,7 @@
 
 
         
-        debugHelper.AddDebugLine(Loc.DebugParentShown, parentPage);
+       
 
         return retVal;
     }
