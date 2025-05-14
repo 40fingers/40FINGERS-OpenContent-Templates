@@ -12,7 +12,8 @@
 
     var selectedPage = Model.ParentPage != null ? tc.GetTab(Convert.ToInt32(Model.ParentPage.id), pid) : null;
     int Level = 0;
-    
+
+  
     if(Model.Level != null){
         Level = Model.Level;
     };
@@ -23,15 +24,18 @@
     breadcrumbs = new ArrayList(Dnn.Portal.ActiveTab.BreadCrumbs); // Ensure breadcrumbs is initialized
 
 
-
         debugHelper.AddDebugLine(loc.DebugMode, Model.Mode); // Log the mode
         parentId = getStartPage(Model.Mode, selectedPage, Level, debugHelper); // Pass DebugHelper to the function
 
 
     var tabs = tc.GetTabsByPortal(pid)
                  .WithParentId(parentId)
-                 .Where(tab => tab.HasBeenPublished && tab.IsVisible && !tab.IsDeleted &&
+                 .Where(tab => tab.HasBeenPublished && !tab.IsDeleted &&
                                DotNetNuke.Security.Permissions.TabPermissionController.CanViewPage(tab));
+
+    bool IgoreMenuDisplaySettings = Model.IgnoreDisplayMenu != null ? Model.IgnoreDisplayMenu : false;
+
+    debugHelper.AddDebugLine(Loc.DebugIgnoreDisplayMenu, IgoreMenuDisplaySettings.ToString());
 }
 
 @functions {
@@ -181,27 +185,27 @@
 
 }
 
-<div class="oc-menu" data-oc-info="@Model.Context.TemplateName">
+<div class="oc-menu oc-menu-buttons" data-oc-info="@Model.Context.TemplateName">
 
 
 
-    @if (SafeStr(Model.Title) + SafeStr(Model.Text) != ""){
-        <div class="oc-intro">
-            @if(Model.Title !=""){
-                <h3 class="oc-menu-title">@Model.Title</h3>
-            }
-            @if(Model.Text !=""){
-                <div class="oc-menu-text">@Model.Text</div>
-            }
-        </div>
-    }
+@if (SafeStr(Model.Title) + SafeStr(Model.Text) != ""){
+    <div class="oc-intro">
+        @if(Model.Title !=""){
+            <h3 class="oc-menu-title">@Model.Title</h3>
+        }
+        @if(Model.Text !=""){
+            <div class="oc-menu-text">@Model.Text</div>
+        }
+    </div>
+}
 
 
     @if (parentId != noTab) {
         <div class="oc-menu-wrapper">
             <ul class="oc-menu-root">
                 @foreach (var tab in tabs) { 
-                    if (tab.HasBeenPublished && tab.IsVisible && !tab.IsDeleted && 
+                    if (tab.HasBeenPublished && (IgoreMenuDisplaySettings || tab.IsVisible) && !tab.IsDeleted && 
                         DotNetNuke.Security.Permissions.TabPermissionController.CanViewPage(tab)) {
                         
                         string activeClass = "";

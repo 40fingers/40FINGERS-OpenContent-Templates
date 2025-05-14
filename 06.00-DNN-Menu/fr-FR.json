@@ -8,5 +8,6 @@
     "DebugNoBreadcrumb": "Aucune page dans le fil d'Ariane au niveau : ",
     "DebugPageNotFound": "Page introuvable",
     "DebugChildren": "Enfants",
-    "DebugSiblings": "Frères et sœurs"
+    "DebugSiblings": "Frères et sœurs",
+    "DebugIgnoreDisplayMenu": "Ignorer le paramètre d'affichage de la page"
 }

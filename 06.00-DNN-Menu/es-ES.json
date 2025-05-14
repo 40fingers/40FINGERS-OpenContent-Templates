@@ -8,5 +8,6 @@
     "DebugNoBreadcrumb": "No hay página en la ruta de navegación en el nivel: ",
     "DebugPageNotFound": "Página no encontrada",
     "DebugChildren": "Niños",
-    "DebugSiblings": "Hermanos"
+    "DebugSiblings": "Hermanos",
+    "DebugIgnoreDisplayMenu": "Ignorar la configuración de visualización de la página"
 }
