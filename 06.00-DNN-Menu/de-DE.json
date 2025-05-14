@@ -8,5 +8,6 @@
     "DebugNoBreadcrumb": "Keine Seite im Breadcrumb auf Ebene: ",
     "DebugPageNotFound": "Seite nicht gefunden",
     "DebugChildren": "Kinder",
-    "DebugSiblings": "Geschwister"
+    "DebugSiblings": "Geschwister",
+    "DebugIgnoreDisplayMenu": "Seitenanzeige-Einstellung ignorieren"
 }

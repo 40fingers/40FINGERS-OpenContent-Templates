@@ -29,6 +29,10 @@
     "Level": {
       "title": "Level",
       "type": "number"
+    },
+    "IgnoreDisplayMenu": {
+      "title": "Ignore Page Display in Menu Setting",
+      "type": "boolean"
     }
   }
 }

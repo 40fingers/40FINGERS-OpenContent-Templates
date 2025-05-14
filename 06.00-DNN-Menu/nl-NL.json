@@ -2,11 +2,12 @@
     "DebugTitle": "Menu-instellingen",
     "DebugMode": "Modus",
     "DebugBreadcrumb": "Aantal pagina's in de broodkruimelnavigatie",
-    "DebugParentShown": "Pagina's weergegeven",
+    "DebugParentShown": "Dochter Pagina's weergegeven van",
     "DebugParentRoot": "Root",
     "DebugNoParent": "Geen filter ingesteld",
     "DebugNoBreadcrumb": "Geen pagina in de broodkruimelnavigatie op niveau: ",
     "DebugPageNotFound": "Pagina niet gevonden",
     "DebugChildren": "Kinderen",
-    "DebugSiblings": "Broers en zussen"
+    "DebugSiblings": "Broers en zussen",
+    "DebugIgnoreDisplayMenu": "Negeer paginaweergave-instelling"
 }
