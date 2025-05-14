@@ -10,9 +10,9 @@
       "configset": "basic"
     },
     "Mode": {
-      "multilanguage": true,
+      "multilanguage": false,
       "dependencies": {},
-      "helper": "",
+      "helper": "Choose what Pages to show in this Menu",
       "type": "select",
       "optionLabels": [
         "Root Menu",
@@ -23,15 +23,15 @@
       ]
     },
     "ParentPage": {
-      /*"dependencies": {
+      "dependencies": {
         "Mode": "Page"
-      },*/
+      },
       "type": "page"
     },
     "Level": {
-      /*"dependencies": {
+      "dependencies": {
         "Mode": "Level"
-      }*/
+      }
     },
     "IgnoreDisplayMenu": {
       "dependencies": {},
