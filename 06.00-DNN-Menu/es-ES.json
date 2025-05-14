@@ -1,13 +1,13 @@
 {
     "DebugTitle": "Configuración del menú",
     "DebugMode": "Modo",
-    "DebugBreadcrumb": "Cantidad de páginas en la ruta de navegación",
-    "DebugParentShown": "Páginas mostradas",
-    "DebugParentRoot": "Raíz",
-    "DebugNoParent": "No se ha establecido ningún filtro",
-    "DebugNoBreadcrumb": "No hay página en la ruta de navegación en el nivel: ",
+    "DebugShow": "Mostrar",
+    "DebugModeRootMessage": "Páginas en la raíz de este sitio",
+    "DebugModePageMessage": "Mostrar páginas hijas de la página (fija)",
+    "DebugModeChildrenMessage": "Mostrar páginas hijas de la página actual",
+    "DebugModeSiblingsMessage": "Mostrar páginas hermanas de la página actual",
+    "DebugBreadcrumbMessage": "Mostrar páginas hijas de la página en la ruta de navegación activa en el nivel",
+    "DebugNoBreadcrumb": "No hay página en la ruta de navegación activa en el nivel",
     "DebugPageNotFound": "Página no encontrada",
-    "DebugChildren": "Niños",
-    "DebugSiblings": "Hermanos",
     "DebugIgnoreDisplayMenu": "Ignorar la configuración de visualización de la página"
 }
