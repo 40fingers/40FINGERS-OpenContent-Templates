@@ -10,7 +10,7 @@
       "type": "string"
     },
     "Mode": {
-      "title": "Parent Page of the Menu",
+      "title": "Type of Menu",
       "default": "Root",
       "required": true,
       "type": "string",
@@ -23,11 +23,11 @@
       ]
     },
     "ParentPage": {
-      "title": "Parent Page",
+      "title": "Choose Parent Page",
       "type": "string"
     },
     "Level": {
-      "title": "Level",
+      "title": "Choose Breadcrumb Level",
       "type": "number"
     },
     "IgnoreDisplayMenu": {
