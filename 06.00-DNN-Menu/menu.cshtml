@@ -4,38 +4,20 @@
 
 @inherits Satrabel.OpenContent.Components.OpenContentWebPage
 
-@{ 
-    var tc = new DotNetNuke.Entities.Tabs.TabController();
-    var pid = Dnn.Portal.PortalId;
-    var tabId = Dnn.Tab.TabID;
-    int parentId = -1;
 
-    var selectedPage = Model.ParentPage != null ? tc.GetTab(Convert.ToInt32(Model.ParentPage.id), pid) : null;
-    int Level = 0;
-
-  
-    if(Model.Level != null){
-        Level = Model.Level;
-    };
-
-    dynamic loc = Model.Localization;
-    Loc = loc;
-
-    breadcrumbs = new ArrayList(Dnn.Portal.ActiveTab.BreadCrumbs); // Ensure breadcrumbs is initialized
-
-
-        debugHelper.AddDebugLine(loc.DebugMode, Model.Mode); // Log the mode
-        parentId = getStartPage(Model.Mode, selectedPage, Level, debugHelper); // Pass DebugHelper to the function
-
-
-    var tabs = tc.GetTabsByPortal(pid)
-                 .WithParentId(parentId)
-                 .Where(tab => tab.HasBeenPublished && !tab.IsDeleted &&
-                               DotNetNuke.Security.Permissions.TabPermissionController.CanViewPage(tab));
-
-    bool IgoreMenuDisplaySettings = Model.IgnoreDisplayMenu != null ? Model.IgnoreDisplayMenu : false;
-
-    debugHelper.AddDebugLine(Loc.DebugIgnoreDisplayMenu, IgoreMenuDisplaySettings.ToString());
+@{
+    if (Model.Localization == null)
+    {
+        <div class="oc-error">
+            <h3>A Localization file is missing for this Open Content template.</h3> 
+            <p>Please ensure the localization file (example: fr-CA.json) exists.</p>
+            <ul>
+            <li>Copy and rename one of the existing files (en-US.json), OR</li>
+            <li>Create your own for the language you are using based one of the existing ones</li>
+            </ul>
+        </div>
+        return;
+    }
 }
 
 @functions {
@@ -189,6 +171,43 @@
 
 
 }
+
+
+
+@{ 
+    var tc = new DotNetNuke.Entities.Tabs.TabController();
+    var pid = Dnn.Portal.PortalId;
+    var tabId = Dnn.Tab.TabID;
+    int parentId = -1;
+
+    var selectedPage = Model.ParentPage != null ? tc.GetTab(Convert.ToInt32(Model.ParentPage.id), pid) : null;
+    int Level = 0;
+
+  
+    if(Model.Level != null){
+        Level = Model.Level;
+    };
+
+    dynamic loc = Model.Localization;
+    Loc = loc;
+
+    breadcrumbs = new ArrayList(Dnn.Portal.ActiveTab.BreadCrumbs); // Ensure breadcrumbs is initialized
+
+
+        debugHelper.AddDebugLine(loc.DebugMode, Model.Mode); // Log the mode
+        parentId = getStartPage(Model.Mode, selectedPage, Level, debugHelper); // Pass DebugHelper to the function
+
+
+    var tabs = tc.GetTabsByPortal(pid)
+                 .WithParentId(parentId)
+                 .Where(tab => tab.HasBeenPublished && !tab.IsDeleted &&
+                               DotNetNuke.Security.Permissions.TabPermissionController.CanViewPage(tab));
+
+    bool IgoreMenuDisplaySettings = Model.IgnoreDisplayMenu != null ? Model.IgnoreDisplayMenu : false;
+
+    debugHelper.AddDebugLine(Loc.DebugIgnoreDisplayMenu, IgoreMenuDisplaySettings.ToString());
+}
+
 
 <div class="oc-menu oc-menu-buttons" data-oc-info="@Model.Context.TemplateName">
 
