@@ -1,0 +1,32 @@
+@{
+  RegisterScript("js/40fingers-headings-toc.js");
+}
+
+@{
+	string selectElements = "h2,h3";
+
+	if(Model.Settings != null && Model.Settings.SelectElements != null && Model.Settings.SelectElements != ""){
+		selectElements = Model.Settings.SelectElements;
+	}
+
+	string skipElements = "";
+
+	if(Model.Settings != null && Model.Settings.SkipElements != null && Model.Settings.SkipElements != ""){
+		skipElements = Model.Settings.SkipElements;
+	}
+
+	
+}
+
+<div class="oc-heading-toc">
+	<div id="heading-toc-@Model.Context.ModuleId">
+	</div>
+</div>
+
+
+<script>
+	// Run after DOM is fully loaded
+	document.addEventListener("DOMContentLoaded", () => {
+	  generateTOC("@selectElements", "@skipElements", "#heading-toc-@Model.Context.ModuleId", "@Model.Context.ModuleId");
+	});
+</script>

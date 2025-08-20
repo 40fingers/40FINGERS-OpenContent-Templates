@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "SelectElements": {
+      "title": "Anchor Element Selector",
+      "default": "h2,h3",
+      "type": "string"
+    },
+    "SkipElements": {
+      "title": "Skip elements inside these elements",
+      "type": "string"
+    }
+  }
+}

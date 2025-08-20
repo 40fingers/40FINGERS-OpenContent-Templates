@@ -1,0 +1,13 @@
+{
+  "fields": {
+    "SelectElements": {
+      "dependencies": {},
+      "type": "text"
+    },
+    "SkipElements": {
+      "dependencies": {},
+      "type": "text",
+      "pattern": "[\\w,]*"
+    }
+  }
+}
