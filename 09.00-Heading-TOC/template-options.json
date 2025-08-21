@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "SelectElements": {
+      "dependencies": {},
+      "type": "text"
+    },
+    "SkipChildrenSelector": {
+      "dependencies": {},
+      "helper": "CSS selector example: \".skip-children\"",
+      "type": "text",
+      "pattern": "[\\w,]*"
+    },
+    "SkipItemsSelector": {
+      "dependencies": {},
+      "helper": "CSS selector example: \".skip-item,.skip-toc\"",
+      "type": "text"
+    }
+  }
+}

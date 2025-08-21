@@ -1,0 +1,37 @@
+@{
+  RegisterScript("js/40fingers-headings-toc.js");
+}
+
+@{
+	string selectElements = "h2,h3";
+
+	if(Model.Settings != null && Model.Settings.SelectElements != null && Model.Settings.SelectElements != ""){
+		selectElements = Model.Settings.SelectElements;
+	}
+
+	string SkipChildrenSelector = "";
+
+	if(Model.Settings != null && Model.Settings.SkipChildrenSelector != null && Model.Settings.SkipChildrenSelector != ""){
+		SkipChildrenSelector = Model.Settings.SkipChildrenSelector;
+	}
+
+	string SkipItemsSelector = "";
+
+	if(Model.Settings != null && Model.Settings.SkipItemsSelector != null && Model.Settings.SkipItemsSelector != ""){
+		SkipItemsSelector = Model.Settings.SkipItemsSelector;
+	}
+	
+}
+
+<div class="oc-heading-toc">
+	<div id="heading-toc-@Model.Context.ModuleId">
+	</div>
+</div>
+
+
+<script>
+	// Run after DOM is fully loaded
+	document.addEventListener("DOMContentLoaded", () => {
+	  generateTOC("@selectElements", "@SkipChildrenSelector", "@SkipItemsSelector", "#heading-toc-@Model.Context.ModuleId", "@Model.Context.ModuleId");
+	});
+</script>

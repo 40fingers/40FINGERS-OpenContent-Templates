@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "SelectElements": {
+      "title": "Anchor Element Selector",
+      "default": "h2,h3",
+      "type": "string"
+    },
+    "SkipChildrenSelector": {
+      "title": "Skip items inside these parent(s)",
+      "type": "string"
+    },
+    "SkipItemsSelector": {
+      "title": "Exclude these Elements",
+      "type": "string"
+    }
+  }
+}

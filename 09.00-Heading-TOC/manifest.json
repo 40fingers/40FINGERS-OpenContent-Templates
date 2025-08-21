@@ -1,0 +1,21 @@
+{
+    "editWitoutPostback": true,
+    "editRole": "",
+    "Index": false,
+	"Advanced": false,
+    "builderVersion": 2,
+    
+    "templates": {
+        "template": {
+            "type": "single", 
+            "title": "Headings TOC",
+            "clientSideData": false,
+            "main": {
+                "template": "template.cshtml",
+                "schemaInTemplate": false,
+                "optionsInTemplate": false,
+                "additionalDataInTemplate": false
+            }
+    }
+}
+}
