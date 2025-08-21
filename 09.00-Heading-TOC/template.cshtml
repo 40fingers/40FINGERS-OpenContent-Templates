@@ -9,12 +9,17 @@
 		selectElements = Model.Settings.SelectElements;
 	}
 
-	string skipElements = "";
+	string SkipChildrenSelector = "";
 
-	if(Model.Settings != null && Model.Settings.SkipElements != null && Model.Settings.SkipElements != ""){
-		skipElements = Model.Settings.SkipElements;
+	if(Model.Settings != null && Model.Settings.SkipChildrenSelector != null && Model.Settings.SkipChildrenSelector != ""){
+		SkipChildrenSelector = Model.Settings.SkipChildrenSelector;
 	}
 
+	string SkipItemsSelector = "";
+
+	if(Model.Settings != null && Model.Settings.SkipItemsSelector != null && Model.Settings.SkipItemsSelector != ""){
+		SkipItemsSelector = Model.Settings.SkipItemsSelector;
+	}
 	
 }
 
@@ -27,6 +32,6 @@
 <script>
 	// Run after DOM is fully loaded
 	document.addEventListener("DOMContentLoaded", () => {
-	  generateTOC("@selectElements", "@skipElements", "#heading-toc-@Model.Context.ModuleId", "@Model.Context.ModuleId");
+	  generateTOC("@selectElements", "@SkipChildrenSelector", "@SkipItemsSelector", "#heading-toc-@Model.Context.ModuleId", "@Model.Context.ModuleId");
 	});
 </script>

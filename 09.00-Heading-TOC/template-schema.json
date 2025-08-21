@@ -6,8 +6,12 @@
       "default": "h2,h3",
       "type": "string"
     },
-    "SkipElements": {
-      "title": "Skip elements inside these elements",
+    "SkipChildrenSelector": {
+      "title": "Skip items inside these parent(s)",
+      "type": "string"
+    },
+    "SkipItemsSelector": {
+      "title": "Exclude these Elements",
       "type": "string"
     }
   }
