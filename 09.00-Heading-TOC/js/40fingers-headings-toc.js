@@ -21,7 +21,8 @@ function generateTOC(
   ulClass = "toc-menu",
   liClass = "toc-menu-item",
   linkClass = "toc-menu-anchor",
-  excludeMeSelector = ".DnnModule-OpenContent"
+  excludeMeSelector = ".DnnModule-OpenContent",
+  anchorElementClass = "oc-toc-anchor"
 ) {
   // Helper: slugify text to safe IDs
   function slugify(text) {
@@ -60,36 +61,41 @@ function generateTOC(
       ul.classList.add(ulClass + "-" + anchorSuffix);
     }
 
-    headings.forEach((heading, index) => {
-      // Generate or reuse ID
-      let headingId = heading.id;
-      if (!headingId) {
-        headingId = anchorSuffix
-          ? `${slugify(heading.textContent)}-${anchorSuffix}`
-          : slugify(heading.textContent);
+headings.forEach((heading, index) => {
+    // Generate or reuse ID
+    let headingId = heading.id;
+    if (!headingId) {
+      headingId = anchorSuffix
+        ? `${slugify(heading.textContent)}-${anchorSuffix}`
+        : slugify(heading.textContent);
 
-        // Ensure uniqueness
-        let uniqueId = headingId;
-        let counter = 1;
-        while (document.getElementById(uniqueId)) {
-          uniqueId = `${headingId}-${counter++}`;
-        }
-        headingId = uniqueId;
-        heading.id = headingId;
+      // Ensure uniqueness
+      let uniqueId = headingId;
+      let counter = 1;
+      while (document.getElementById(uniqueId)) {
+        uniqueId = `${headingId}-${counter++}`;
       }
+      headingId = uniqueId;
+    }
 
-      // Create <li><a>
-      const li = document.createElement("li");
-      li.className = liClass;
+    // Always insert an anchor before the heading
+    const anchor = document.createElement("a");
+    anchor.id = headingId;
+    anchor.className = anchorElementClass; // or use your anchorElement param if needed
+    heading.parentNode.insertBefore(anchor, heading);
 
-      const a = document.createElement("a");
-      a.className = linkClass;
-      a.href = `#${headingId}`;
-      a.textContent = heading.textContent.trim();
+    // Create <li><a>
+    const li = document.createElement("li");
+    li.className = liClass;
 
-      li.appendChild(a);
-      ul.appendChild(li);
-    });
+    const a = document.createElement("a");
+    a.className = linkClass;
+    a.href = `#${headingId}`;
+    a.textContent = heading.textContent.trim();
+
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
 
     // Replace content inside the TOC container
     container.innerHTML = "";
