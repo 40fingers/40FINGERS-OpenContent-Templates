@@ -206,6 +206,14 @@
     bool IgoreMenuDisplaySettings = Model.IgnoreDisplayMenu != null ? Model.IgnoreDisplayMenu : false;
 
     debugHelper.AddDebugLine(Loc.DebugIgnoreDisplayMenu, IgoreMenuDisplaySettings.ToString());
+	
+	 // Order Alphabetically
+	 bool TabsAlphabetical = Model.Alphabetically != null ? Model.Alphabetically : false;	
+
+	if (TabsAlphabetical)
+	{
+		tabs = tabs.OrderBy(tab => tab.TabName);
+	}
 }
 
 

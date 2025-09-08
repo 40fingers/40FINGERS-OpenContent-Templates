@@ -33,6 +33,10 @@
     "IgnoreDisplayMenu": {
       "title": "Ignore Page Display in Menu Setting",
       "type": "boolean"
+    },
+    "Alphabetically": {
+      "title": "Order Alphabetically",
+      "type": "boolean"
     }
   }
 }
