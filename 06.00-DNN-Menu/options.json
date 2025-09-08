@@ -36,6 +36,9 @@
     "IgnoreDisplayMenu": {
       "dependencies": {},
       "helper": "When Set, the Page will even show if 'Display in Menu' is false"
+    },
+    "Alphabetically": {
+      "dependencies": {}
     }
   }
 }
