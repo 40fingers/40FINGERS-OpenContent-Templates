@@ -89,5 +89,7 @@
     .permissions-grid .role-permissions-grid tr td:nth-child(3){
         border-right: solid 2px var(--dnn-color-primary);
     }
-     .permissions-grid .role-permissions-grid tr th:nth-child(n+4){
-        
+	
+	.permissions-grid .role-permissions-grid tr th:nth-child(n+4){
+         color: #ddd;
+    }
