@@ -1,0 +1,93 @@
+ /* main variables */
+    :root {
+        --pb-info-text-color: #666;
+        --pb-border-color: #bbb;
+        --pb-file-upload-bg: #666;
+        
+        --pb-text-color-disabled: #ddd;
+
+        --pb-surface-bg: #fafafa;
+        --pb-primary-color: var(--dnn-color-primary); 
+        
+        /* overrruling the border color as there are way to many items to overwrite indivisually.. */
+        --dnn-color-foreground-light: var(--pb-border-color);
+    }
+
+    /* Pages tabs */
+    .dnn-tabs.react-tabs.primary > ul{
+        background: var(--pb-surface-bg);
+        border-bottom: solid 1px var(--pb-border-color);
+        padding: 0.4em 0.4em 0;
+    }
+
+    .dnn-tabs.react-tabs.primary > ul li{
+        padding: 0.8em 1.2em;
+    }
+
+    .dnn-tabs.react-tabs.primary > ul li[aria-selected="true"]{
+        z-index: 2;
+        position:relative;
+        border: solid 1px var(--pb-border-color);
+        border-top: solid 3px var(--pb-primary-color);
+        border-bottom: solid 2px #fff;
+        margin-bottom: -3px;
+    }
+
+    /* general padding of PB content */
+    .style-module__pageSettings___apHwv .dnn-simple-tab-item{
+        margin: 1.5em 2em;
+    }
+
+    /* Page info row on top*/
+    .page-info-row .page-info-item{
+        padding: 0 0 0.5em;
+        color: var(--pb-info-text-color);
+    }
+
+    .page-info-row .page-info-item .page-info-item-value{
+        padding-left: 0.2em !important;
+    }
+
+    /* Distance between header and content */
+    .style-module__pageTypeSelector___GknPR{
+        padding-bottom: 1em;
+    }
+    .style-module__pageStandard___MtUqN{
+        margin-top: 1em;
+    }
+
+    /* distance between label and input */
+    .dnn-label.block{
+        margin-bottom: 0 !important; /* Overrule inline style*/
+    }
+
+    /* was hardcoded */
+    .dnn-page-picker.with-border{
+       border-color: var(--pb-border-color);
+    }
+
+    /* File uploads */  
+    .dnn-file-upload .overlay .buttons .button{
+        --dnn-color-foreground: var(--pb-file-upload-bg); /* or directly: color/background */
+    }
+    .dnn-file-upload{
+        background: var(--pb-surface-bg);
+    }
+
+    /* Switch slider */
+    .dnn-switch-container{
+        border-radius: 10px;
+    }
+    .dnn-switch-container .switch-button .mark{
+        border-radius: 50%;
+    }
+    .dnn-switch-container .dnn-switch{
+        border-radius: 1em;
+    }
+    
+    /* permissions grid pages */
+    .permissions-grid .role-permissions-grid tr td:nth-child(3){
+        border-right: solid 2px var(--dnn-color-primary);
+    }
+     .permissions-grid .role-permissions-grid tr th:nth-child(n+4){
+        
