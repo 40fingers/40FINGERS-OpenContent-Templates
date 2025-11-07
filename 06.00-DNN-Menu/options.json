@@ -16,8 +16,8 @@
       "type": "select",
       "optionLabels": [
         "Root Menu",
-        "Childeren of Current Page",
         "Siblings of Current Page",
+        "Childeren of Current Page",
         "A Specific Page's Children",
         "Page on Level x in Breadcrumb"
       ]
@@ -32,6 +32,17 @@
       "dependencies": {
         "Mode": "Level"
       }
+    },
+    "AddParent": {
+      "dependencies": {
+        "Mode": "Page,Level,CurrentPage"
+      }
+    },
+    "ParentNameOverrule": {
+      "dependencies": {
+        "Mode": "Page,Level,CurrentPage"
+      },
+      "type": "text"
     },
     "IgnoreDisplayMenu": {
       "dependencies": {},

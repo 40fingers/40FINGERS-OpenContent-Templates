@@ -5,21 +5,6 @@
 @inherits Satrabel.OpenContent.Components.OpenContentWebPage
 
 
-@{
-    if (Model.Localization == null)
-    {
-        <div class="oc-error">
-            <h3>A Localization file is missing for this Open Content template.</h3> 
-            <p>Please ensure the localization file (example: fr-CA.json) exists.</p>
-            <ul>
-            <li>Copy and rename one of the existing files (en-US.json), OR</li>
-            <li>Create your own for the language you are using based one of the existing ones</li>
-            </ul>
-        </div>
-        return;
-    }
-}
-
 @functions {
 
     bool isAdminOrHost(){
@@ -49,52 +34,47 @@
         case "Root":
             retVal = -1; // Root level
             parentPage = Loc.DebugParentRoot;
-            debugHelper.AddDebugLine(Loc.DebugShow, Loc.DebugModeRootMessage);
             break;
 
         case "CurrentChildren":
             retVal = Dnn.Tab.TabID; // Current page's children
-            parentPage = Dnn.Tab.TabName;
-            debugHelper.AddDebugLine(Loc.DebugModeChildrenMessage, parentPage);
+            parentPage = Dnn.Tab.TabName + " > " + Loc.DebugChildren;
             break;
 
         case "CurrentSiblings":
             retVal = Dnn.Tab.ParentId; // Current page's siblings
-            parentPage = Dnn.Tab.TabName;
-            debugHelper.AddDebugLine(Loc.DebugModeSiblingsMessage, parentPage);
+            parentPage = Dnn.Tab.TabName + " > " + Loc.DebugSiblings;
             break;
 
         case "Page":
             if(StartPage != null){
                 retVal = StartPage.TabID; // Current page
                 parentPage = StartPage.TabName;
-                debugHelper.AddDebugLine(Loc.DebugModePageMessage, parentPage);
             }else{
                 retVal = noTab;
-                debugHelper.AddDebugLine(Loc.DebugPageNotFound);
+                parentPage = Loc.DebugPageNotFound;
             }
             
             break;
 
         case "Level": // Level logic is handled below
             
-           
+            debugHelper.AddDebugLine(Loc.DebugBreadcrumb, breadcrumbs.Count);
+
             if (Level < breadcrumbs.Count) {
                 var bcTab = breadcrumbs[Level] as DotNetNuke.Entities.Tabs.TabInfo;
                 if (bcTab != null) {
                     retVal = bcTab.ParentId;
-                    debugHelper.AddDebugLine(Loc.DebugBreadcrumbMessage, Level);
+                    parentPage = bcTab.TabName + " > " + Loc.DebugSiblings;
                 }
                 else {
-                    parentPage = Loc.DebugNoBreadcrumb + Level;
-                    retVal = noTab;
-                     debugHelper.AddDebugLine(Loc.DebugNoBreadcrumb, Level);
+                parentPage = Loc.DebugNoBreadcrumb + Level;
+                retVal = noTab;
                  }
 
             } else {
                 parentPage = Loc.DebugNoBreadcrumb + Level;
                 retVal = noTab;
-                 debugHelper.AddDebugLine(Loc.DebugNoBreadcrumb, Level);
             }
 
             break;
@@ -107,7 +87,7 @@
 
 
         
-       
+        debugHelper.AddDebugLine(Loc.DebugParentShown, parentPage);
 
         return retVal;
     }
@@ -172,8 +152,6 @@
 
 }
 
-
-
 @{ 
     var tc = new DotNetNuke.Entities.Tabs.TabController();
     var pid = Dnn.Portal.PortalId;
@@ -182,8 +160,7 @@
 
     var selectedPage = Model.ParentPage != null ? tc.GetTab(Convert.ToInt32(Model.ParentPage.id), pid) : null;
     int Level = 0;
-
-  
+    
     if(Model.Level != null){
         Level = Model.Level;
     };
@@ -191,6 +168,7 @@
     dynamic loc = Model.Localization;
     Loc = loc;
 
+    // Used to detect active Parent
     breadcrumbs = new ArrayList(Dnn.Portal.ActiveTab.BreadCrumbs); // Ensure breadcrumbs is initialized
 
 
@@ -203,21 +181,43 @@
                  .Where(tab => tab.HasBeenPublished && !tab.IsDeleted &&
                                DotNetNuke.Security.Permissions.TabPermissionController.CanViewPage(tab));
 
-    bool IgoreMenuDisplaySettings = Model.IgnoreDisplayMenu != null ? Model.IgnoreDisplayMenu : false;
 
-    debugHelper.AddDebugLine(Loc.DebugIgnoreDisplayMenu, IgoreMenuDisplaySettings.ToString());
-	
-	 // Order Alphabetically
-	 bool TabsAlphabetical = Model.Alphabetically != null ? Model.Alphabetically : false;	
+
+ bool IgoreMenuDisplaySettings = Model.IgnoreDisplayMenu != null ? Model.IgnoreDisplayMenu : false;	
+ bool TabsAlphabetical = Model.Alphabetically != null ? Model.Alphabetically : false;	
 
 	if (TabsAlphabetical)
 	{
 		tabs = tabs.OrderBy(tab => tab.TabName);
 	}
-}
 
+ bool AddParent = Model.AddParent != null ? Model.AddParent : false;	
 
-<div class="oc-menu oc-menu-buttons" data-oc-info="@Model.Context.TemplateName">
+if (AddParent && parentId > 0){
+
+    var ParentTabInfo = tc.GetTab(Convert.ToInt32(parentId), pid);
+
+    // Make a shallow copy so we don't mutate the cached TabInfo
+    var displayParent = new TabInfo
+    {
+        TabID = ParentTabInfo.TabID,
+        TabName = ParentTabInfo.TabName,
+        ParentId = ParentTabInfo.ParentId,
+        Level = ParentTabInfo.Level
+    };
+
+    string ParentName = Model.ParentNameOverrule != null  != null ? Model.ParentNameOverrule : null;	
+    
+    if(ParentName != null){
+       displayParent.TabName =  ParentName;
+    }
+    if (displayParent.TabID > 0){
+        tabs = tabs.Prepend(displayParent);
+    }
+
+}																				  
+	}
+<div class="oc-menu oc-menu-tabs">
 
 
 
@@ -240,17 +240,22 @@
                     if (tab.HasBeenPublished && (IgoreMenuDisplaySettings || tab.IsVisible) && !tab.IsDeleted && 
                         DotNetNuke.Security.Permissions.TabPermissionController.CanViewPage(tab)) {
                         
-                        string activeClass = "";
+                        string itemClass = "";
 
                         if(tabId == tab.TabID){
-                            activeClass = "active";
+                            itemClass = "active";
                         }else{
                             if(breadcrumbs.Cast<TabInfo>().Any(bc => bc.TabID == tab.TabID)){
-                                activeClass = "active-parent";
+                                itemClass = "active-parent";
                             }
                         }
-                        <li class="oc-menu-item @activeClass">
-                            <a href="@tab.FullUrl" class="oc-menu-link @activeClass" aria-haspopup="false">
+
+                        // Get a class for the Parent Item on top
+                        if(tab.ParentId != parentId){
+                            itemClass += " parent-item";
+                        }
+                        <li class="oc-menu-item @itemClass">
+                            <a href="@DotNetNuke.Common.Globals.NavigateURL(tab.TabID)" class="oc-menu-link @itemClass-link" aria-haspopup="false">
                                 <span>@tab.TabName</span>
                             </a>
                         </li>
