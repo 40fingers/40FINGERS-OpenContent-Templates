@@ -16,8 +16,8 @@
       "type": "string",
       "enum": [
         "Root",
-        "CurrentChildren",
         "CurrentSiblings",
+        "CurrentChildren",
         "Page",
         "Level"
       ]
@@ -29,6 +29,14 @@
     "Level": {
       "title": "Choose Breadcrumb Level",
       "type": "number"
+    },
+    "AddParent": {
+      "title": "Add Parent Page to Menu",
+      "type": "boolean"
+    },
+    "ParentNameOverrule": {
+      "title": "Parent Page Name Overrule",
+      "type": "string"
     },
     "IgnoreDisplayMenu": {
       "title": "Ignore Page Display in Menu Setting",

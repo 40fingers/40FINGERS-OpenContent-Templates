@@ -2,6 +2,13 @@
     margin-bottom: 2em;
 }
 
+/* This is the item that get's injected if you set AddParent to true */
+.oc-menu a.parent-item-link{
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+
 .oc-debug-log{
     --border: solid 1px #ddd;
     --background: #f4f4f4;
