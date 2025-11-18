@@ -14,7 +14,7 @@
 	var strPortalAlias = Dnn.Portal.PortalAlias;
 	
 	var db = Database.Open("SiteSqlServer");
-	var txtSql = @"SELECT  Tabs.PortalID, Tabs.Tabid, Tabs.TabName, Tabs.TabPath, OpenContent_Items.ModuleId, '<a href=""/default.aspx?tabid=' + CONVERT(nvarchar, Tabs.Tabid) + '"" target=""_blank"">Link</a>' AS Link
+	var txtSql = @"SELECT DISTINCT Tabs.PortalID, Tabs.Tabid, Tabs.TabName, Tabs.TabPath, OpenContent_Items.ModuleId, '<a href=""/default.aspx?tabid=' + CONVERT(nvarchar, Tabs.Tabid) + '"" target=""_blank"">Link</a>' AS Link
 FROM            TabModules INNER JOIN
                          Tabs ON TabModules.TabID = Tabs.TabID INNER JOIN
                          OpenContent_Items ON TabModules.ModuleID = OpenContent_Items.ModuleId
