@@ -13,11 +13,18 @@
         {{#each Items}}
         {{#if Gallery}}
         {{#each Gallery}}
+       
         <div class="photo_box" data-item="{{../Context.Id}}">
-            <a href="{{Image}}" data-fancybox="gallery" data-caption="" title="">
-                <img src="{{Image}}?width=600" alt="" title="" class="gallery-icon unresponsive" />
-            </a>
+            {{#if ../Context.IsEditable}}
+            <a href="{{../Context.EditUrl}}" class="photo-edit-link" title="Edit {{../Title}}"><i class="fa fa-pencil"></i></a>
+            {{/if}}
+            <div class="photo-box-image">
+                <a href="{{Image}}" data-fancybox="gallery" data-caption="" title="">
+                    <img src="{{Image}}?width=600" alt="" title="" class="gallery-icon unresponsive" />
+                </a>
+            </div>
         </div>
+        
         {{/each}}
         {{/if}}
         {{/each}}
