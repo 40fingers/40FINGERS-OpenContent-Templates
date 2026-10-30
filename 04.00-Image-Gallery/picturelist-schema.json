@@ -8,6 +8,18 @@
     "CropListImages":{
       "type": "boolean"
 
+    },
+    "SelectedItems": {
+      "type": "array",
+      "title": "Items to take images from"
+    },
+    "MaxImages": {
+      "type": "number",
+      "title": "Max number of images"
+    },
+    "Random": {
+      "type": "boolean",
+      "title": "Random order"
     }
   }
 }

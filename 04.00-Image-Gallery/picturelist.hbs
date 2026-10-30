@@ -9,11 +9,11 @@
     </div>
 
 
-    <div class="gallery-list-wrapper {{#if Settings.CropListImages}}list-image-crop{{else}}list-image-scale{{/if}}">
+    <div class="gallery-list-wrapper oc-pending {{#if Settings.CropListImages}}list-image-crop{{else}}list-image-scale{{/if}}" data-items="{{#each Settings.SelectedItems}}{{this}},{{/each}}" data-max="{{Settings.MaxImages}}" data-random="{{#if Settings.Random}}true{{/if}}">
         {{#each Items}}
         {{#if Gallery}}
         {{#each Gallery}}
-        <div class="photo_box">
+        <div class="photo_box" data-item="{{../Context.Id}}">
             <a href="{{Image}}" data-fancybox="gallery" data-caption="" title="">
                 <img src="{{Image}}?width=600" alt="" title="" class="gallery-icon unresponsive" />
             </a>
@@ -23,3 +23,34 @@
         {{/each}}
     </div>
 </div>
+
+<script>
+    (function () {
+        var wrapper = document.currentScript.previousElementSibling.querySelector('.gallery-list-wrapper');
+        var items = wrapper.getAttribute('data-items').split(',').filter(Boolean);
+        var max = parseInt(wrapper.getAttribute('data-max'), 10) || 0;
+        var boxes = Array.prototype.slice.call(wrapper.querySelectorAll('.photo_box'));
+
+        if (items.length) {
+            boxes = boxes.filter(function (box) {
+                if (items.indexOf(box.getAttribute('data-item')) > -1) return true;
+                box.parentNode.removeChild(box);
+                return false;
+            });
+        }
+
+        if (wrapper.getAttribute('data-random')) {
+            for (var i = boxes.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var tmp = boxes[i]; boxes[i] = boxes[j]; boxes[j] = tmp;
+            }
+            boxes.forEach(function (box) { wrapper.appendChild(box); });
+        }
+
+        if (max > 0) {
+            boxes.slice(max).forEach(function (box) { box.parentNode.removeChild(box); });
+        }
+
+        wrapper.classList.remove('oc-pending');
+    })();
+</script>
