@@ -179,3 +179,7 @@ ul.tags span {
     z-index: 100000;
 }
 
+
+.gallery-list-wrapper.oc-pending {
+    visibility: hidden;
+}

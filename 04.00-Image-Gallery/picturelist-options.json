@@ -8,6 +8,26 @@
       "type": "checkbox",
       "label": "Crop images in List"
 
+    },
+    "SelectedItems": {
+      "type": "select2",
+      "multiple": true,
+      "helper": "Leave empty to use all items",
+      "dataService": {
+        "action": "Lookup",
+        "data": {
+          "valueField": "Id",
+          "textField": "Title"
+        }
+      }
+    },
+    "MaxImages": {
+      "type": "integer",
+      "helper": "Leave empty or 0 to show all images"
+    },
+    "Random": {
+      "type": "checkbox",
+      "rightLabel": "Show images in random order"
     }
   }
 }
