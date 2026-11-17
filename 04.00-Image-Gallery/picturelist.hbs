@@ -9,7 +9,7 @@
     </div>
 
 
-    <div class="gallery-list-wrapper oc-pending {{#if Settings.CropListImages}}list-image-crop{{else}}list-image-scale{{/if}}" data-items="{{#each Settings.SelectedItems}}{{this}},{{/each}}" data-max="{{Settings.MaxImages}}" data-random="{{#if Settings.Random}}true{{/if}}">
+    <div id="oc-picturelist-{{Context.ModuleId}}" class="gallery-list-wrapper oc-pending {{#if Settings.CropListImages}}list-image-crop{{else}}list-image-scale{{/if}}" data-items="{{#each Settings.SelectedItems}}{{this}},{{/each}}" data-max="{{Settings.MaxImages}}" data-random="{{#if Settings.Random}}true{{/if}}">
         {{#each Items}}
         {{#if Gallery}}
         {{#each Gallery}}
@@ -20,7 +20,7 @@
             {{/if}}
             <div class="photo-box-image">
                 <a href="{{Image}}" data-fancybox="gallery" data-caption="" title="">
-                    <img src="{{Image}}?width=600" alt="" title="" class="gallery-icon unresponsive" />
+                    <img data-src="{{Image}}?width=600" alt="" title="" class="gallery-icon unresponsive" />
                 </a>
             </div>
         </div>
@@ -33,7 +33,11 @@
 
 <script>
     (function () {
-        var wrapper = document.currentScript.previousElementSibling.querySelector('.gallery-list-wrapper');
+        function init() {
+        var wrapper = document.getElementById('oc-picturelist-{{Context.ModuleId}}');
+        if (!wrapper || wrapper.getAttribute('data-oc-init')) return;
+        wrapper.setAttribute('data-oc-init', '1');
+        try {
         var items = wrapper.getAttribute('data-items').split(',').filter(Boolean);
         var max = parseInt(wrapper.getAttribute('data-max'), 10) || 0;
         var boxes = Array.prototype.slice.call(wrapper.querySelectorAll('.photo_box'));
@@ -56,8 +60,23 @@
 
         if (max > 0) {
             boxes.slice(max).forEach(function (box) { box.parentNode.removeChild(box); });
+            boxes = boxes.slice(0, max);
         }
 
-        wrapper.classList.remove('oc-pending');
+        // Only now load the images that are actually shown
+        boxes.forEach(function (box) {
+            var img = box.querySelector('img[data-src]');
+            if (img) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }
+        });
+
+        } finally {
+            wrapper.classList.remove('oc-pending');
+        }
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
     })();
 </script>
